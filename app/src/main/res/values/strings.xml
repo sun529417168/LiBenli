@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LiBenli</string>
+    <!--主界面start-->
+    <string name="main_task">"任务"</string>
+    <string name="main_problem">"问题上报"</string>
+    <string name="main_notice">"通知公告"</string>
+    <string name="main_statistical">"统计查询"</string>
+    <string name="main_mine">"我的"</string>
+    <!--主界面end-->
+</resources>
