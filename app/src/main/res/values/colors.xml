@@ -8,6 +8,7 @@
     <color name="blue2">#5FBFFC</color>
     <!--蓝深色-->
     <color name="blue3">#1B6DA1</color>
+    <color name="blue4">#04acf7</color>
     <!--灰色-->
     <color name="gray">#A9A9A9</color>
     <color name="gray_s">#EEEEEE</color>
@@ -27,4 +28,27 @@
     <color name="yellow">#C0B619</color>
     <!--绿色-->
     <color name="green">#1E7101</color>
+
+    <!--背景色-->
+    <color name="background">#f5f5f9</color>
+    <color name="login_bg">#efeff5</color>
+    <!-- 一级字体的灰色 -->
+    <color name="gray_text">#999999</color>
+    <!-- 二级字体的灰色 -->
+    <color name="gray_text2">#666666</color>
+    <!-- 三级字体的灰色 -->
+    <color name="gray_text3">#333333</color>
+    <color name="gray_888888">#888888</color>
+    <color name="ed_line">#E2E3E5</color>
+    <!-- listview分割线 -->
+    <color name="selected_bg">#fafafa</color>
+    <!--浅白色-->
+    <color name="colorFFFFFF">#FFFFFF</color>
+    <color name="colorE2E2E2">#E2E2E2</color>
+    <color name="colorefeff4">#efeff4</color>
+    <color name="colorb5b5b5">#b5b5b5</color>
+
+    <drawable name="login_textgray">#999999</drawable>
+    <drawable name="white">#ffffff</drawable>
+    <drawable name="lightblue">#6ecbf5</drawable>
 </resources>

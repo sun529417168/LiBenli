@@ -7,4 +7,30 @@
     <string name="main_statistical">"统计查询"</string>
     <string name="main_mine">"我的"</string>
     <!--主界面end-->
+
+    <!--登录界面start-->
+    <string name="login_name">用户名：</string>
+    <string name="login_namehint">请输入用户名</string>
+    <string name="login_password">密码：</string>
+    <string name="login_btn">登录</string>
+    <!--登录界面end-->
+
+    <!--点名界面 begin-->
+    <string name="task_task">点名</string>
+    <string name="task_leave">请假</string>
+    <string name="task_normal">正常</string>
+    <!--点名界面 end-->
+
+    <!--成绩排行 begin-->
+    <string name="scores">成绩排行</string>
+    <string name="scores_ranking">排名</string>
+    <string name="scores_name">姓名</string>
+    <string name="scores_combat">战斗力</string>
+    <!--成绩排行 end-->
+
+    <!--标题栏start-->
+    <string name="btn_add">添加</string>
+    <string name="btn_ok">完成</string>
+    <string name="tv_cancel">取消</string>
+    <!--标题栏end-->
 </resources>

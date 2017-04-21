@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/login_bg"
+    android:gravity="center_vertical"
+    >
+    <LinearLayout
+        android:id="@+id/ll_login_name"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp" >
+
+        <TextView
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="@string/login_name"
+            android:textColor="@color/gray_text2"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/login_edmail"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/login_namehint"
+            android:textColor="@color/gray_text3"
+            android:textColorHint="@color/gray_888888"
+            android:textSize="15sp" >
+        </EditText>
+
+        <RelativeLayout
+            android:id="@+id/login_rrcmail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/login_cmail"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@mipmap/login_close" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_below="@id/ll_login_name"
+        style="@style/viewline" />
+
+    <LinearLayout
+        android:id="@+id/ll_login_password"
+        android:background="@color/white"
+        android:layout_below="@id/view_line"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp" >
+
+        <TextView
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="@string/login_password"
+            android:textColor="@color/gray_text2"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/login_edpass"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:inputType="textPassword"
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:id="@+id/login_rrcpass"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/login_cpass"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@mipmap/login_close" />
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout
+    android:id="@+id/login_rrbtn"
+    android:layout_width="fill_parent"
+    android:layout_height="45dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_below="@id/ll_login_password"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/login_btn" >
+
+    <TextView
+        android:id="@+id/logintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/login_btn"
+        android:textColor="@drawable/login_text"
+        android:textSize="15sp" />
+</RelativeLayout>
+
+</RelativeLayout>

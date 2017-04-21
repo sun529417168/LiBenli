@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/blue4">
+    <!-- 标题-普遍的Header -->
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center_horizontal">
+    <!-- 返回-图片 -->
+    <RelativeLayout
+        android:id="@+id/rl_back"
+        android:layout_width="50dp"
+        android:layout_height="47dp"
+        android:layout_alignParentLeft="true"
+        android:gravity="center" >
+
+        <ImageView
+            style="@style/title_img_white"  />
+    </RelativeLayout>
+
+    <!-- 取消 文字 -->
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="60dp"
+        android:layout_height="47dp"
+        android:gravity="center"
+        android:text="@string/tv_cancel"
+        android:textColor="@drawable/loginfind_nextone"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
+    <!-- 标题-文字 -->
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/title_tv"
+        android:layout_centerInParent="true"
+        android:maxEms="10"
+        android:singleLine="true" />
+
+   <!-- 添加-文字 -->
+
+    <Button
+        android:id="@+id/modifyhonor_btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:background="@color/blue"
+        android:text="@string/btn_add"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <!-- 完成-文字 -->
+
+    <TextView
+        android:id="@+id/introduction_btn"
+        android:layout_width="60dp"
+        android:layout_height="47dp"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:text="@string/btn_ok"
+        android:textColor="@drawable/loginfind_nextone"
+        android:textSize="15sp"
+        android:visibility="gone" />
+    </RelativeLayout>
+</RelativeLayout>

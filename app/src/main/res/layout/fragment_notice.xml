@@ -2,11 +2,107 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorefeff4"
     android:orientation="vertical">
+    <include
+        android:id="@+id/rl_title"
+        layout="@layout/title" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#00000000" ></ListView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="第二个" />
+    <LinearLayout
+        android:id="@+id/searchbar"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:paddingTop="11dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/search_textview_layout"
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/searchbg" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical" >
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="15dp"
+                    android:background="@mipmap/name_search" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scores_name"
+                    android:textColor="@color/colorb5b5b5"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/search_edittext_layout"
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/searchbg"
+            android:visibility="gone" >
+
+            <EditText
+                android:id="@+id/edit_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/scores_name"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:paddingLeft="25dp"
+                android:singleLine="true"
+                android:textColor="@color/colorb5b5b5"
+                android:textColorHint="@color/colorb5b5b5"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="15dp"
+                android:layout_alignBottom="@+id/edit_search"
+                android:layout_alignLeft="@+id/edit_search"
+                android:layout_alignTop="@+id/edit_search"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:src="@mipmap/name_search" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorefeff4" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/shade"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/searchbar"
+        android:background="#50323232"
+        android:visibility="gone" >
+    </RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>
