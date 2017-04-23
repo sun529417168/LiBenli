@@ -2,11 +2,118 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_s">
+    android:background="@color/background">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="第五个" />
+    <include
+        android:id="@+id/rl_title"
+        layout="@layout/title" />
+
+    <!-- 修改道馆信息 -->
+    <RelativeLayout
+        android:id="@+id/rl_me_update"
+        android:layout_below="@id/rl_title"
+        style="@style/mine_item_relativelayout" >
+
+        <ImageButton
+            android:id="@+id/ib_update"
+            style="@style/me_img"
+            android:background="@mipmap/me_update" />
+
+        <TextView
+            android:id="@+id/tv_update"
+            style="@style/me_tv"
+            android:layout_toRightOf="@id/ib_update"
+            android:text="@string/mine_update" />
+
+        <ImageButton
+            android:id="@+id/ib_arrow1"
+            style="@style/mine_arrow" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/v_line1"
+        style="@style/line_color_e2e2e2"
+        android:layout_below="@id/rl_me_update" />
+
+    <!--学员列表-->
+    <RelativeLayout
+        android:id="@+id/rl_me_list"
+        android:layout_below="@id/v_line1"
+        style="@style/mine_item_relativelayout" >
+
+        <ImageButton
+            android:id="@+id/ib_list"
+            style="@style/me_img"
+            android:background="@mipmap/me_list" />
+
+        <TextView
+            android:id="@+id/tv_list"
+            style="@style/me_tv"
+            android:layout_toRightOf="@id/ib_list"
+            android:text="@string/mine_list" />
+
+        <ImageButton
+            android:id="@+id/ib_arrow2"
+            style="@style/mine_arrow" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/v_line2"
+        style="@style/line_color_e2e2e2"
+        android:layout_below="@id/rl_me_list" />
+
+    <!--点到信息-->
+    <RelativeLayout
+        android:id="@+id/rl_me_info"
+        android:layout_below="@id/v_line2"
+        style="@style/mine_item_relativelayout" >
+
+        <ImageButton
+            android:id="@+id/ib_info"
+            style="@style/me_img"
+            android:background="@mipmap/me_info" />
+
+        <TextView
+            android:id="@+id/tv_info"
+            style="@style/me_tv"
+            android:layout_toRightOf="@id/ib_info"
+            android:text="@string/mine_info" />
+
+        <ImageButton
+            android:id="@+id/ib_arrow3"
+            style="@style/mine_arrow" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/v_line3"
+        style="@style/line_color_e2e2e2"
+        android:layout_below="@id/rl_me_info" />
+
+    <!--联系我们-->
+    <RelativeLayout
+        android:id="@+id/rl_me_contact"
+        android:layout_below="@id/v_line3"
+        style="@style/mine_item_relativelayout" >
+
+        <ImageButton
+            android:id="@+id/ib_contact"
+            style="@style/me_img"
+            android:background="@mipmap/me_contact" />
+
+        <TextView
+            android:id="@+id/tv_contact"
+            style="@style/me_tv"
+            android:layout_toRightOf="@id/ib_contact"
+            android:text="@string/mine_info" />
+
+        <ImageButton
+            android:id="@+id/ib_arrow4"
+            style="@style/mine_arrow" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/v_line4"
+        style="@style/line_color_e2e2e2"
+        android:layout_below="@id/rl_me_contact" />
+
 </RelativeLayout>

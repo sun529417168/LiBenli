@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/rl_title"
+        layout="@layout/title" />
+
+    <!--道馆名字-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp" >
+
+        <TextView
+            android:id="@+id/updateinfo_name_tv"
+            android:text="@string/updateinfo_name"
+            style="@style/mine_updateinfo_textview" />
+
+        <EditText
+            android:id="@+id/updateinfo_name_et"
+            android:hint="@string/updateinfo_name_hint"
+            android:layout_toRightOf="@id/updateinfo_name_tv"
+            style="@style/mine_updateinfo_edittext"
+             />
+    </RelativeLayout>
+
+    <View style="@style/viewline" />
+    <!--地址-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp" >
+
+        <TextView
+            android:id="@+id/updateinfo_address_tv"
+            android:text="@string/updateinfo_address"
+            style="@style/mine_updateinfo_textview" />
+
+        <EditText
+            android:id="@+id/updateinfo_address_et"
+            android:hint="@string/updateinfo_address_hint"
+            android:layout_toRightOf="@id/updateinfo_address_tv"
+            style="@style/mine_updateinfo_edittext"
+            />
+    </RelativeLayout>
+
+    <View style="@style/viewline" />
+    <!--联系人-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp" >
+
+        <TextView
+            android:id="@+id/updateinfo_contact_tv"
+            android:text="@string/updateinfo_contact"
+            style="@style/mine_updateinfo_textview" />
+
+        <EditText
+            android:id="@+id/updateinfo_contact_et"
+            android:hint="@string/updateinfo_contact_hint"
+            android:layout_toRightOf="@id/updateinfo_contact_tv"
+            style="@style/mine_updateinfo_edittext"
+            />
+    </RelativeLayout>
+
+    <View style="@style/viewline" />
+    <!--联系电话-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp" >
+
+        <TextView
+            android:id="@+id/updateinfo_phone_tv"
+            android:text="@string/updateinfo_phone"
+            style="@style/mine_updateinfo_textview" />
+
+        <EditText
+            android:id="@+id/updateinfo_phone_et"
+            android:hint="@string/updateinfo_phone_hint"
+            android:layout_toRightOf="@id/updateinfo_phone_tv"
+            style="@style/mine_updateinfo_edittext"
+            />
+    </RelativeLayout>
+
+    <View style="@style/viewline" />
+</LinearLayout>

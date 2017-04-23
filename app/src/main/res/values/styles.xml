@@ -117,6 +117,86 @@
     </style>
     <!--成绩排名Item end-->
 
+    <!--我 RelativeLayout begin-->
+    <style name="mine_item_relativelayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/mine_item_rl</item>
+    </style>
+    <!--我 RelativeLayout end-->
+
+    <!-- 我 Image begin -->
+    <style name="me_img">
+        <item name="android:layout_width">18dp</item>
+        <item name="android:layout_height">18dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">15dp</item>
+    </style>
+    <!-- 我 Image end -->
+
+    <!--我 TextView begin-->
+    <style name="me_tv">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">12dp</item>
+        <item name="android:gravity">center|left</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <!--我 TextView end-->
+
+    <!--我 右边箭头 begin-->
+    <style name="mine_arrow">
+        <item name="android:layout_width">8dp</item>
+        <item name="android:layout_height">14dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:background">@mipmap/arrow</item>
+    </style>
+    <!--我 右边箭头 end-->
+
+    <!-- 我-横线 begin -->
+    <style name="line_color_e2e2e2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:background">@color/colorE2E2E2</item>
+    </style>
+    <!-- 我-横线 begin -->
+    =""
+    android:layout_height=""
+    android:gravity=""
+    android:textColor=""
+    android:textSize=""
+    <!--我-修改道馆信息 TextView begin-->
+    <style name="mine_updateinfo_textview">
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+    <!--我-修改道馆信息 TextView end-->
+
+    <!--我-修改道馆信息 EditText begin-->
+    <style name="mine_updateinfo_edittext">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/gray_text3</item>
+        <item name="android:textColorHint">@color/colorBBBBBB</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+    <!--我-修改道馆信息 EditText end-->
+
     <!--横线 begin-->
     <style name="line_color_gray">
         <item name="android:layout_width">match_parent</item>

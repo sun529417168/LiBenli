@@ -41,6 +41,26 @@
     <string name="course_name_prompt">请输入课程名称</string>
     <!--训练课程 end-->
 
+    <!--我 begin-->
+    <string name="mine">我</string>
+    <string name="mine_update">修改道馆信息</string>
+    <string name="mine_list">学员列表</string>
+    <string name="mine_info">点到信息</string>
+    <string name="mine_contact">联系我们</string>
+    <string name="mine_exit">退出</string>
+    <!--我 end-->
+
+    <!--我-修改道馆信息 begin-->
+    <string name="updateinfo_name">道馆名字：</string>
+    <string name="updateinfo_address">地址：</string>
+    <string name="updateinfo_contact">联系人：</string>
+    <string name="updateinfo_phone">联系电话：</string>
+    <string name="updateinfo_name_hint">道馆名字</string>
+    <string name="updateinfo_address_hint">地址</string>
+    <string name="updateinfo_contact_hint">联系人</string>
+    <string name="updateinfo_phone_hint">联系电话</string>
+    <!--我-修改道馆信息 end-->
+
     <!--标题栏start-->
     <string name="btn_add">添加</string>
     <string name="btn_ok">完成</string>

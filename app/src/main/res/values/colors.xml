@@ -47,6 +47,8 @@
     <color name="colorE2E2E2">#E2E2E2</color>
     <color name="colorefeff4">#efeff4</color>
     <color name="colorb5b5b5">#b5b5b5</color>
+    <!--浅黑色-->
+    <color name="colorBBBBBB">#BBBBBB</color>
 
     <drawable name="login_textgray">#999999</drawable>
     <drawable name="white">#ffffff</drawable>
