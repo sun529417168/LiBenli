@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import com.libenli.R;
 import com.libenli.base.BaseFragment;
 
@@ -20,6 +23,9 @@ import com.libenli.base.BaseFragment;
 
 public class ProblemFragment extends BaseFragment {
 
+    private TextView tv_title;
+    private RelativeLayout rl_back;
+    private TextView btn_add;
 
     @Override
     protected View setView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +43,13 @@ public class ProblemFragment extends BaseFragment {
 
     @Override
     protected void init(View rootView) {
+        tv_title = (TextView) rootView.findViewById(R.id.tv_title);
+        tv_title.setText(getResources().getString(R.string.course));
+        rl_back = (RelativeLayout) rootView.findViewById(R.id.rl_back);
+        rl_back.setVisibility(View.GONE);
+        btn_add = (TextView) rootView.findViewById(R.id.btn_add);
+        btn_add.setVisibility(View.VISIBLE);
+
     }
 
 

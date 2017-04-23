@@ -45,18 +45,16 @@
 
    <!-- 添加-文字 -->
 
-    <Button
-        android:id="@+id/modifyhonor_btn_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        android:background="@color/blue"
-        android:text="@string/btn_add"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:visibility="gone" />
+        <TextView
+            android:id="@+id/btn_add"
+            android:layout_width="60dp"
+            android:layout_height="47dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="@string/btn_add"
+            android:textColor="@drawable/loginfind_nextone"
+            android:textSize="15sp"
+            android:visibility="gone" />
 
     <!-- 完成-文字 -->
 

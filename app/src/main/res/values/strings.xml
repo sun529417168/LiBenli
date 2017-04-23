@@ -28,6 +28,19 @@
     <string name="scores_combat">战斗力</string>
     <!--成绩排行 end-->
 
+    <!--成绩排行详情 begin-->
+    <string name="scores_details_day">当天</string>
+    <string name="scores_details_month">当月</string>
+    <string name="scores_details_name">项目名称</string>
+    <string name="scores_details_power">力量成绩</string>
+    <string name="scores_details_speed">速度成绩</string>
+    <!--成绩排行详情 end-->
+
+    <!--训练课程 begin-->
+    <string name="course">训练课程</string>
+    <string name="course_name_prompt">请输入课程名称</string>
+    <!--训练课程 end-->
+
     <!--标题栏start-->
     <string name="btn_add">添加</string>
     <string name="btn_ok">完成</string>
