@@ -61,6 +61,24 @@
     <string name="updateinfo_phone_hint">联系电话</string>
     <!--我-修改道馆信息 end-->
 
+    <!--我-学员列表 begin-->
+    <string name="studentinfo_name">姓名:</string>
+    <string name="studentinfo_sex">性别：</string>
+    <string name="studentinfo_age">年龄：</string>
+    <string name="studentinfo_phone">家长电话：</string>
+    <string name="studentinfo_address">家庭地址：</string>
+    <string name="studentinfo_name_hint">姓名</string>
+    <string name="studentinfo_sex_hint">性别</string>
+    <string name="studentinfo_age_hint">年龄</string>
+    <string name="studentinfo_phone_hint">家长电话</string>
+    <string name="studentinfo_address_hint">家庭地址</string>
+    <!--我-学员列表 end-->
+
+    <!--我-点到信息查询 begin-->
+    <string name="pointselect_name">姓名</string>
+    <string name="pointselect_time">时间</string>
+    <!--我-点到信息查询 end-->
+
     <!--标题栏start-->
     <string name="btn_add">添加</string>
     <string name="btn_ok">完成</string>

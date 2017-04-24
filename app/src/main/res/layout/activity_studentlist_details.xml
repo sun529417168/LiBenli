@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--学员信息-详情-->
+    <include
+        android:id="@+id/rl_title"
+        layout="@layout/title" />
+
+    <!--姓名-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp" >
+
+        <TextView
+            android:id="@+id/studentinfo_name_tv"
+            android:text="@string/studentinfo_name"
+            style="@style/mine_updateinfo_textview" />
+
+        <EditText
+            android:id="@+id/studentinfo_name_et"
+            android:hint="@string/studentinfo_name_hint"
+            android:layout_toRightOf="@id/studentinfo_name_tv"
+            style="@style/mine_updateinfo_edittext"
+            />
+    </RelativeLayout>
+
+    <View style="@style/viewline" />
+
+    <!--性别-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp" >
+
+        <TextView
+            android:id="@+id/studentinfo_sex_tv"
+            android:text="@string/studentinfo_age"
+            style="@style/mine_updateinfo_textview" />
+
+        <EditText
+            android:id="@+id/studentinfo_sex_et"
+            android:hint="@string/studentinfo_sex_hint"
+            android:layout_toRightOf="@id/studentinfo_sex_tv"
+            style="@style/mine_updateinfo_edittext"
+            />
+    </RelativeLayout>
+
+    <View style="@style/viewline" />
+
+    <!--年龄-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp" >
+
+        <TextView
+            android:id="@+id/studentinfo_age_tv"
+            android:text="@string/studentinfo_age"
+            style="@style/mine_updateinfo_textview" />
+
+        <EditText
+            android:id="@+id/studentinfo_age_et"
+            android:hint="@string/studentinfo_age_hint"
+            android:layout_toRightOf="@id/studentinfo_age_tv"
+            style="@style/mine_updateinfo_edittext"
+            />
+    </RelativeLayout>
+
+    <View style="@style/viewline" />
+
+    <!--家长电话-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp" >
+
+        <TextView
+            android:id="@+id/studentinfo_phone_tv"
+            android:text="@string/studentinfo_phone"
+            style="@style/mine_updateinfo_textview" />
+
+        <EditText
+            android:id="@+id/studentinfo_phone_et"
+            android:hint="@string/studentinfo_phone_hint"
+            android:layout_toRightOf="@id/studentinfo_phone_tv"
+            style="@style/mine_updateinfo_edittext"
+            />
+    </RelativeLayout>
+
+    <View style="@style/viewline" />
+
+    <!--家庭地址-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp" >
+
+        <TextView
+            android:id="@+id/studentinfo_address_tv"
+            android:text="@string/studentinfo_address"
+            style="@style/mine_updateinfo_textview" />
+
+        <EditText
+            android:id="@+id/studentinfo_address_et"
+            android:hint="@string/studentinfo_address_hint"
+            style="@style/mine_updateinfo_edittext"
+            android:layout_toRightOf="@+id/studentinfo_address_tv" />
+    </RelativeLayout>
+
+    <View style="@style/viewline" />
+
+    <!--战斗力-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp" >
+
+        <TextView
+            android:id="@+id/studentinfo_combat_tv"
+            android:text="@string/scores_combat"
+            style="@style/mine_updateinfo_textview" />
+
+        <TextView
+            android:id="@+id/studentinfo_combat_et"
+            android:text="1024"
+            android:layout_toRightOf="@id/studentinfo_combat_tv"
+            style="@style/me_tv"
+            />
+    </RelativeLayout>
+
+    <View style="@style/viewline" />
+</LinearLayout>
