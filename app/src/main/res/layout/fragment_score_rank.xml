@@ -1,121 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <include
         android:id="@+id/rl_title"
         layout="@layout/title" />
+
     <LinearLayout
         android:id="@+id/ll_name"
-        android:layout_below="@id/rl_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_below="@id/rl_title"
         android:gravity="center_vertical"
         android:weightSum="2">
+
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center">
+
             <TextView
                 style="@style/notice_title"
-                android:text="啦啦"/>
+                android:text="啦啦" />
         </LinearLayout>
+
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/name_search"/>
+                android:src="@mipmap/name_search" />
+
             <TextView
                 style="@style/notice_title"
-                android:text="1024"/>
+                android:text="1024" />
         </LinearLayout>
     </LinearLayout>
+
     <View
         android:id="@+id/view1"
-        android:layout_below="@id/ll_name"
-        style="@style/line_color_gray" />
+        style="@style/line_color_gray"
+        android:layout_below="@id/ll_name" />
+
     <LinearLayout
         android:id="@+id/ll_type"
-        android:layout_below="@id/view1"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@id/view1"
         android:gravity="center_vertical"
         android:weightSum="2">
+
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center">
+
             <TextView
                 style="@style/notice_title"
-                android:textColor="@color/blue4"
-                android:text="@string/scores_details_day"/>
+                android:text="@string/scores_details_day"
+                android:textColor="@color/blue4" />
         </LinearLayout>
+
         <View
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@color/gray"/>
+            android:background="@color/gray" />
+
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center">
+
             <TextView
                 style="@style/notice_title"
-                android:text="@string/scores_details_month"/>
+                android:text="@string/scores_details_month" />
         </LinearLayout>
     </LinearLayout>
+
     <View
         android:id="@+id/view2"
-        android:layout_below="@id/ll_type"
-        style="@style/line_color_gray" />
+        style="@style/line_color_gray"
+        android:layout_below="@id/ll_type" />
 
     <LinearLayout
         android:id="@+id/ll_list_title"
-        android:layout_below="@id/view2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@id/view2"
         android:gravity="center_vertical"
         android:weightSum="3">
+
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center">
+
             <TextView
                 style="@style/notice_title"
-                android:text="@string/scores_details_name"/>
+                android:text="@string/scores_details_name" />
         </LinearLayout>
+
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center">
+
             <TextView
                 style="@style/notice_title"
-                android:text="@string/scores_details_power"/>
+                android:text="@string/scores_details_power" />
         </LinearLayout>
+
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center">
+
             <TextView
                 style="@style/notice_title"
-                android:text="@string/scores_details_speed"/>
+                android:text="@string/scores_details_speed" />
         </LinearLayout>
     </LinearLayout>
+
     <View
         android:id="@+id/view3"
-        android:layout_below="@id/ll_list_title"
-        style="@style/line_color_gray" />
-<ListView
-    android:layout_below="@id/view3"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-</ListView>
+        style="@style/line_color_gray"
+        android:layout_below="@id/ll_list_title" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/score_rank_refresh_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view3"
+        android:cacheColorHint="#00000000"
+        android:divider="#19000000"
+        android:dividerHeight="4dp"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrListViewExtrasEnabled="false"
+        ptr:ptrMode="both"
+        ptr:ptrScrollingWhileRefreshingEnabled="true" />
 </RelativeLayout>

@@ -1,7 +1,6 @@
 package com.libenli.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +30,7 @@ public class MineFragment extends BaseFragment {
     @Override
     protected View setView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         context = inflater.getContext();
-        View view = inflater.inflate(R.layout.fragment_mine, null);
+        View view = inflater.inflate(R.layout.fragment_coach_mine, null);
         return view;
     }
 

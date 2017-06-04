@@ -204,4 +204,16 @@
         <item name="android:background">@color/gray</item>
     </style>
     <!--横线 end-->
+
+    <!-- 设置对话框的透明 和点击外面无效果start -->
+    <style name="DialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <!-- 设置对话框的透明 和点击外面无效果end -->
 </resources>

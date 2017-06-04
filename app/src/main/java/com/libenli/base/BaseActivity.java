@@ -64,7 +64,12 @@ public abstract class BaseActivity extends BaseCheckPermissionActivity implement
             SharedUtil.setInteger(this, "network", 1);
         }
     }
-
+    /**
+     * 方法名：setOnCreate
+     * 功    能：初始化操作
+     * 参    数：Bundle savedInstanceState
+     * 返回值：无
+     */
     private void setOnCreate(Bundle savedInstanceState) {
         setView();
         setDate(savedInstanceState);

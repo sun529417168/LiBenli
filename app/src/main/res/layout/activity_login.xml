@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/login_bg"
     android:gravity="center_vertical"
-    >
+    android:orientation="vertical">
+
     <LinearLayout
         android:id="@+id/ll_login_name"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:gravity="center_vertical"
         android:background="@color/white"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="15dp" >
+        android:paddingLeft="15dp">
 
         <TextView
             android:layout_width="65dp"
@@ -32,15 +32,14 @@
             android:hint="@string/login_namehint"
             android:textColor="@color/gray_text3"
             android:textColorHint="@color/gray_888888"
-            android:textSize="15sp" >
-        </EditText>
+            android:textSize="15sp" />
 
         <RelativeLayout
             android:id="@+id/login_rrcmail"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:gravity="center"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/login_cmail"
@@ -52,18 +51,18 @@
 
     <View
         android:id="@+id/view_line"
-        android:layout_below="@id/ll_login_name"
-        style="@style/viewline" />
+        style="@style/viewline"
+        android:layout_below="@id/ll_login_name" />
 
     <LinearLayout
         android:id="@+id/ll_login_password"
-        android:background="@color/white"
-        android:layout_below="@id/view_line"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
+        android:layout_below="@id/view_line"
+        android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="15dp" >
+        android:paddingLeft="15dp">
 
         <TextView
             android:layout_width="65dp"
@@ -87,7 +86,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:gravity="center"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/login_cpass"
@@ -96,25 +95,47 @@
                 android:src="@mipmap/login_close" />
         </RelativeLayout>
     </LinearLayout>
-    <RelativeLayout
-    android:id="@+id/login_rrbtn"
-    android:layout_width="fill_parent"
-    android:layout_height="45dp"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp"
-    android:layout_below="@id/ll_login_password"
-    android:layout_marginTop="20dp"
-    android:background="@drawable/login_btn" >
 
-    <TextView
-        android:id="@+id/logintext"
+    <RelativeLayout
+        android:id="@+id/login_rrbtn"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/ll_login_password"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_btn">
+
+        <TextView
+            android:id="@+id/logintext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/login_btn"
+            android:textColor="@drawable/login_text"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/login_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/login_btn"
-        android:textColor="@drawable/login_text"
-        android:textSize="15sp" />
-</RelativeLayout>
+        android:layout_below="@+id/login_rrbtn"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/login_parents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/main_parents" />
+
+        <RadioButton
+            android:id="@+id/login_coach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_coach" />
+    </RadioGroup>
 
 </RelativeLayout>

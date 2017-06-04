@@ -11,8 +11,8 @@
     <!-- 修改道馆信息 -->
     <RelativeLayout
         android:id="@+id/rl_me_update"
-        android:layout_below="@id/rl_title"
-        style="@style/mine_item_relativelayout" >
+        style="@style/mine_item_relativelayout"
+        android:layout_below="@id/rl_title">
 
         <ImageButton
             android:id="@+id/ib_update"
@@ -38,8 +38,8 @@
     <!--学员列表-->
     <RelativeLayout
         android:id="@+id/rl_me_list"
-        android:layout_below="@id/v_line1"
-        style="@style/mine_item_relativelayout" >
+        style="@style/mine_item_relativelayout"
+        android:layout_below="@id/v_line1">
 
         <ImageButton
             android:id="@+id/ib_list"
@@ -65,8 +65,8 @@
     <!--点到信息-->
     <RelativeLayout
         android:id="@+id/rl_me_info"
-        android:layout_below="@id/v_line2"
-        style="@style/mine_item_relativelayout" >
+        style="@style/mine_item_relativelayout"
+        android:layout_below="@id/v_line2">
 
         <ImageButton
             android:id="@+id/ib_info"
@@ -92,8 +92,8 @@
     <!--联系我们-->
     <RelativeLayout
         android:id="@+id/rl_me_contact"
-        android:layout_below="@id/v_line3"
-        style="@style/mine_item_relativelayout" >
+        style="@style/mine_item_relativelayout"
+        android:layout_below="@id/v_line3">
 
         <ImageButton
             android:id="@+id/ib_contact"

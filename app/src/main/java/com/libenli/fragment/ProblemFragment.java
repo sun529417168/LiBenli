@@ -11,8 +11,6 @@ import com.libenli.R;
 import com.libenli.base.BaseFragment;
 
 
-
-
 /**
  * 文件名：ProblemFragment
  * 描    述：问题上报界面
@@ -29,7 +27,7 @@ public class ProblemFragment extends BaseFragment {
 
     @Override
     protected View setView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_problem, null);
+        View view = inflater.inflate(R.layout.fragment_score_rank, null);
         return view;
     }
 

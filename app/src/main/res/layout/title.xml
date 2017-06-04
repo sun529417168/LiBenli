@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/blue4">
+    android:background="@color/blue4"
+    android:orientation="vertical">
     <!-- 标题-普遍的Header -->
 
     <RelativeLayout
@@ -11,30 +11,30 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_gravity="center_horizontal">
-    <!-- 返回-图片 -->
-    <RelativeLayout
-        android:id="@+id/rl_back"
-        android:layout_width="50dp"
-        android:layout_height="47dp"
-        android:layout_alignParentLeft="true"
-        android:gravity="center" >
+        <!-- 返回-图片 -->
+        <RelativeLayout
+            android:id="@+id/rl_back"
+            android:layout_width="50dp"
+            android:layout_height="47dp"
+            android:visibility="gone"
+            android:layout_alignParentLeft="true"
+            android:gravity="center">
 
-        <ImageView
-            style="@style/title_img_white"  />
-    </RelativeLayout>
+            <ImageView style="@style/title_img_white" />
+        </RelativeLayout>
 
-    <!-- 取消 文字 -->
-    <TextView
-        android:id="@+id/tv_exit"
-        android:layout_width="60dp"
-        android:layout_height="47dp"
-        android:gravity="center"
-        android:text="@string/mine_exit"
-        android:textColor="@drawable/loginfind_nextone"
-        android:textSize="15sp"
-        android:visibility="gone" />
+        <!-- 取消 文字 -->
+        <TextView
+            android:id="@+id/tv_exit"
+            android:layout_width="60dp"
+            android:layout_height="47dp"
+            android:gravity="center"
+            android:text="@string/mine_exit"
+            android:textColor="@drawable/loginfind_nextone"
+            android:textSize="15sp"
+            android:visibility="gone" />
 
-     <!--退出 文字-->
+        <!--退出 文字-->
         <!-- 取消 文字 -->
         <TextView
             android:id="@+id/tv_cancel"
@@ -46,16 +46,16 @@
             android:textSize="15sp"
             android:visibility="gone" />
 
-    <!-- 标题-文字 -->
+        <!-- 标题-文字 -->
 
-    <TextView
-        android:id="@+id/tv_title"
-        style="@style/title_tv"
-        android:layout_centerInParent="true"
-        android:maxEms="10"
-        android:singleLine="true" />
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/title_tv"
+            android:layout_centerInParent="true"
+            android:maxEms="10"
+            android:singleLine="true" />
 
-   <!-- 添加-文字 -->
+        <!-- 添加-文字 -->
 
         <TextView
             android:id="@+id/btn_add"
@@ -68,17 +68,17 @@
             android:textSize="15sp"
             android:visibility="gone" />
 
-    <!-- 完成-文字 -->
+        <!-- 完成-文字 -->
 
-    <TextView
-        android:id="@+id/introduction_btn"
-        android:layout_width="60dp"
-        android:layout_height="47dp"
-        android:layout_alignParentRight="true"
-        android:gravity="center"
-        android:text="@string/btn_ok"
-        android:textColor="@drawable/loginfind_nextone"
-        android:textSize="15sp"
-        android:visibility="gone" />
+        <TextView
+            android:id="@+id/introduction_btn"
+            android:layout_width="60dp"
+            android:layout_height="47dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="@string/btn_ok"
+            android:textColor="@drawable/loginfind_nextone"
+            android:textSize="15sp"
+            android:visibility="gone" />
     </RelativeLayout>
 </RelativeLayout>
