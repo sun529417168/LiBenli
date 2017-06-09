@@ -9,8 +9,14 @@
         style="@style/rl_release_label">
 
         <TextView
+            android:id="@+id/dianming_date"
+            style="@style/tv_release_lable"
+            android:text="2017-06-09" />
+
+        <TextView
             android:id="@+id/dianming_name"
             style="@style/tv_release_lable"
+            android:layout_toRightOf="@id/dianming_date"
             android:text="哈哈哈" />
 
         <Button
