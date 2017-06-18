@@ -16,10 +16,6 @@
             android:layout_weight="1"
             android:gravity="center">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/name_search" />
 
             <TextView
                 android:id="@+id/info_NO"

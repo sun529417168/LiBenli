@@ -75,6 +75,31 @@
             android:name=".activity.MainCoachActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
+        <!--教练登陆战斗力排行-->
+        <activity
+            android:name=".activity.RankCoachActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <!--添加新课程-->
+        <activity
+            android:name=".activity.AddTrainCourseCoachActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <!--修改道館信息-->
+        <activity
+            android:name=".activity.CoachUpdateInfoActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <!--学员列表-->
+        <activity
+            android:name=".activity.CoachStudentListActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <!--学员信息添加-->
+        <activity
+            android:name=".activity.AddorUpdateStudentCoachActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

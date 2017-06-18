@@ -104,7 +104,7 @@
             android:id="@+id/tv_contact"
             style="@style/me_tv"
             android:layout_toRightOf="@id/ib_contact"
-            android:text="@string/mine_info" />
+            android:text="@string/mine_contact" />
 
         <ImageButton
             android:id="@+id/ib_arrow4"

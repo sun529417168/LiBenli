@@ -2,28 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical">
-    <!--点名-->
     <include
         android:id="@+id/rl_title"
         layout="@layout/title" />
-
-    <!--当天日期-->
-    <TextView
-        android:id="@+id/dianming_date_today"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/gray_s"
-        android:paddingBottom="2dp"
-        android:paddingLeft="15dp"
-        android:paddingTop="2dp"
-        android:textSize="18sp" />
-
     <com.handmark.pulltorefresh.library.PullToRefreshListView xmlns:ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/dianming_refresh_list"
+        android:id="@+id/train_course_coach_refresh_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/view3"
         android:cacheColorHint="#00000000"
         android:divider="#19000000"
         android:dividerHeight="4dp"
@@ -36,12 +23,4 @@
         ptr:ptrListViewExtrasEnabled="false"
         ptr:ptrMode="both"
         ptr:ptrScrollingWhileRefreshingEnabled="true" />
-
-    <TextView
-        android:id="@+id/dianming_nothing"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/nothing"
-        android:visibility="gone" />
-
 </LinearLayout>

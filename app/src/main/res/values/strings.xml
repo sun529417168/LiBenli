@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">LiBenli</string>
+    <string name="nothing">"暂无数据"</string>
     <!--主界面start-->
     <string name="main_dianming">"点到信息"</string>
-    <string name="main_info">"成绩信息"</string>
-    <string name="main_paihang">"成绩排行"</string>
+    <string name="main_info">"训练课程"</string>
+    <string name="main_paihang">"战力排行"</string>
     <string name="main_mine">"我的"</string>
     <string name="main_parents">"家长端"</string>
     <string name="main_coach">"教练端"</string>
@@ -63,7 +64,7 @@
     <!--我-修改道馆信息 end-->
 
     <!--我-学员列表 begin-->
-    <string name="studentinfo_name">姓名:</string>
+    <string name="studentinfo_name">姓名：</string>
     <string name="studentinfo_sex">性别：</string>
     <string name="studentinfo_age">年龄：</string>
     <string name="studentinfo_phone">家长电话：</string>

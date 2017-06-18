@@ -84,8 +84,7 @@ public abstract class MyBaseAdapter extends BaseAdapter {
      * 加载布局
      */
     private View inflate(int layoutResID) {
-        LayoutInflater layoutInflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(layoutResID, null);
         return view;
     }

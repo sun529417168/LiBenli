@@ -117,25 +117,5 @@
             android:textSize="15sp" />
     </RelativeLayout>
 
-    <RadioGroup
-        android:id="@+id/login_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login_rrbtn"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/login_parents"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/main_parents" />
-
-        <RadioButton
-            android:id="@+id/login_coach"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/main_coach" />
-    </RadioGroup>
 
 </RelativeLayout>

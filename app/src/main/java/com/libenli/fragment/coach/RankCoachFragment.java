@@ -1,4 +1,4 @@
-package com.libenli.fragment.parent;
+package com.libenli.fragment.coach;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,13 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.libenli.R;
-import com.libenli.adapter.parent.InfoAdapter;
+import com.libenli.adapter.coach.RankCoachAdapter;
 import com.libenli.base.BaseFragment;
 import com.libenli.bean.StudentInfoBean;
 import com.libenli.interfaces.InterfaceHandler;
@@ -26,20 +25,20 @@ import java.util.ArrayList;
 
 /**
  * 文件名：InfoFragment
- * 描    述：训练课程
+ * 描    述：战力排行
  * 作    者：stt
  * 时    间：2016.12.30
  * 版    本：V1.0.0
  */
 
-public class InfoFragment extends BaseFragment implements InterfaceHandler.StudentInfoInterface {
+public class RankCoachFragment extends BaseFragment implements InterfaceHandler.StudentInfoInterface {
 
     private Context context;
     private TextView tv_title;
     private ArrayList<StudentInfoBean> listBean = new ArrayList<>();
     //刷新控件
     private PullToRefreshListView mPullRefreshListView;
-    private InfoAdapter infoAdapter;
+    private RankCoachAdapter rankCoachAdapter;
     private int pageindex = 1;//页码数
 
     @Override
@@ -71,7 +70,7 @@ public class InfoFragment extends BaseFragment implements InterfaceHandler.Stude
                 // 这里写下拉刷新的任务
                 pageindex = 1;
                 requestStudentInfo(pageindex);
-                infoAdapter.notifyDataSetChanged();
+                rankCoachAdapter.notifyDataSetChanged();
                 mPullRefreshListView.onRefreshComplete();
             }
 
@@ -81,7 +80,7 @@ public class InfoFragment extends BaseFragment implements InterfaceHandler.Stude
                 // 这里写上拉加载更多的任务
                 pageindex++;
                 requestStudentInfo(pageindex);
-                infoAdapter.notifyDataSetChanged();
+                rankCoachAdapter.notifyDataSetChanged();
                 mPullRefreshListView.onRefreshComplete();
             }
         });
@@ -100,12 +99,12 @@ public class InfoFragment extends BaseFragment implements InterfaceHandler.Stude
             mPullRefreshListView.setVisibility(View.VISIBLE);
             if (pageindex == 1) {
                 listBean = studentInfoBean;
-                infoAdapter = new InfoAdapter(context, listBean);
-                mPullRefreshListView.setAdapter(infoAdapter);
+                rankCoachAdapter = new RankCoachAdapter(context, listBean);
+                mPullRefreshListView.setAdapter(rankCoachAdapter);
             } else if (pageindex > 1 && studentInfoBean.size() != 0) {
                 listBean.addAll(studentInfoBean);
-                infoAdapter = new InfoAdapter(context, listBean);
-                mPullRefreshListView.setAdapter(infoAdapter);
+                rankCoachAdapter = new RankCoachAdapter(context, listBean);
+                mPullRefreshListView.setAdapter(rankCoachAdapter);
             } else if (pageindex > 1 && studentInfoBean.size() == 0) {
                 ToastUtil.show(context, "没有更多数据了");
             }

@@ -54,7 +54,7 @@ public class MainParentActivity extends BaseFragmentActivity {
     @Override
     public void init() {
         context = this;
-        viewPager = (ViewPager) findViewById(R.id.activity_main_coach_viewpager);
+        viewPager = (ViewPager) findViewById(R.id.activity_main_parent_viewpager);
         initView();
         fragmentPagerAdapter = new FragmentPagerAdapter(
                 getSupportFragmentManager()) {

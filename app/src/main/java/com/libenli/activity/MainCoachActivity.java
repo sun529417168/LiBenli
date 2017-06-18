@@ -15,9 +15,9 @@ import com.libenli.R;
 import com.libenli.base.BaseFragmentActivity;
 import com.libenli.fragment.MineFragment;
 import com.libenli.fragment.coach.DianMingCFragment;
-import com.libenli.fragment.parent.DianMingPFragment;
+import com.libenli.fragment.coach.RankCoachFragment;
+import com.libenli.fragment.coach.TrainCourseCoachFragment;
 import com.libenli.fragment.parent.InfoFragment;
-import com.libenli.fragment.parent.RankFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -166,8 +166,8 @@ public class MainCoachActivity extends BaseFragmentActivity {
 
 
         fragmentList.add(new DianMingCFragment());
-        fragmentList.add(new RankFragment());
-        fragmentList.add(new InfoFragment());
+        fragmentList.add(new RankCoachFragment());
+        fragmentList.add(new TrainCourseCoachFragment());
         fragmentList.add(new MineFragment());
 
         layout_dianDao.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +179,7 @@ public class MainCoachActivity extends BaseFragmentActivity {
             }
         });
 
-        layout_course.setOnClickListener(new View.OnClickListener() {
+        layout_rank.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -188,7 +188,7 @@ public class MainCoachActivity extends BaseFragmentActivity {
             }
         });
 
-        layout_rank.setOnClickListener(new View.OnClickListener() {
+        layout_course.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {

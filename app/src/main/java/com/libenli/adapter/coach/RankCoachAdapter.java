@@ -1,4 +1,4 @@
-package com.libenli.adapter.parent;
+package com.libenli.adapter.coach;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,12 +21,12 @@ import java.util.List;
  * 版    本：V1.0.0
  */
 
-public class InfoAdapter extends MyBaseAdapter {
+public class RankCoachAdapter extends MyBaseAdapter {
 
 
     private ArrayList<StudentInfoBean> listBean = new ArrayList<>();
 
-    public InfoAdapter(Context context, List list) {
+    public RankCoachAdapter(Context context, List list) {
         super(context, list);
         listBean = (ArrayList<StudentInfoBean>) list;
     }
@@ -44,5 +44,15 @@ public class InfoAdapter extends MyBaseAdapter {
         NO.setText(position + "");
         name.setText(listBean.get(position).getStudentName());
         score.setText(listBean.get(position).getFightingCapacity() + "");
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, RankCoachActivity.class);
+                intent.putExtra("studentName", listBean.get(position).getStudentName());
+                intent.putExtra("fightingCapacity", listBean.get(position).getFightingCapacity() + "");
+                intent.putExtra("ssid", listBean.get(position).getId());
+                context.startActivity(intent);
+            }
+        });
     }
 }
