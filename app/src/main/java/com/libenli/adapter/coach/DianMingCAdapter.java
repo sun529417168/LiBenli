@@ -10,6 +10,7 @@ import com.libenli.R;
 import com.libenli.base.MyBaseAdapter;
 import com.libenli.bean.DianMingBean;
 import com.libenli.bean.StudentRollCallBean;
+import com.libenli.interfaces.InterfaceHandler;
 import com.libenli.utils.MyRequest;
 
 import java.util.ArrayList;
@@ -25,18 +26,14 @@ import java.util.List;
 
 public class DianMingCAdapter extends MyBaseAdapter {
     private ArrayList<StudentRollCallBean> listBean = new ArrayList<>();
-    private int type = -1;
+    private InterfaceHandler.StudentInfoInterface studentInfoInterface;
 
-    public DianMingCAdapter(Context context, List list) {
+    public DianMingCAdapter(Context context, List list, InterfaceHandler.StudentInfoInterface studentInfoInterface) {
         super(context, list);
         listBean = (ArrayList<StudentRollCallBean>) list;
+        this.studentInfoInterface = studentInfoInterface;
     }
 
-    public DianMingCAdapter(Context context, List list, int type) {
-        super(context, list);
-        listBean = (ArrayList<StudentRollCallBean>) list;
-        this.type = type;
-    }
 
     @Override
     public int getContentView() {
@@ -64,20 +61,18 @@ public class DianMingCAdapter extends MyBaseAdapter {
                 zhengChang.setBackgroundColor(ContextCompat.getColor(context, R.color.gray_s));
                 break;
         }
-        if (type == -1) {
-            qingJia.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MyRequest.saveFirst(context, bean.getId(), "0");
-                }
-            });
-            zhengChang.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MyRequest.saveFirst(context, bean.getId(), "1");
-                }
-            });
-        }
+        qingJia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyRequest.updateDianMing(context, studentInfoInterface, bean.getId(), "0");
+            }
+        });
+        zhengChang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyRequest.updateDianMing(context, studentInfoInterface, bean.getId(), "1");
+            }
+        });
     }
 
 }

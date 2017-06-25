@@ -19,6 +19,8 @@ import com.libenli.R;
 import com.libenli.adapter.coach.DianMingCAdapter;
 import com.libenli.adapter.parent.DianMingPAdapter;
 import com.libenli.base.BaseActivity;
+import com.libenli.bean.CacheBean;
+import com.libenli.bean.StudentInfoBean;
 import com.libenli.bean.StudentRollCallBean;
 import com.libenli.interfaces.InterfaceHandler;
 import com.libenli.utils.MyRequest;
@@ -140,19 +142,26 @@ public class DianDaoSearchActivity extends BaseActivity implements View.OnClickL
                 tv_titleTime.setTextColor(ContextCompat.getColor(this, R.color.blue));
                 break;
             case R.id.mine_pointselected_nameSearch://按姓名搜索
+                ArrayList<StudentInfoBean> studentInfoList = (ArrayList<StudentInfoBean>) CacheBean.getStudentInfoBean();
                 String name = ed_name.getText().toString().trim();
                 if (TextUtils.isEmpty(name)) {
                     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
                     String time = df.format(new Date());
                     requestData(time);
                 } else {
-                    if (listBean.size() == 0) {
-                        return;
-                    }
-                    for (StudentRollCallBean bean : listBean) {
-                        if (bean.getSi().getStudentName().equals(name)) {
-                            MyRequest.studentRollCall(this, bean.getSiId());
+                    String id = "";
+                    for (StudentInfoBean bean : studentInfoList) {
+                        if (bean.getStudentName().equals(name)) {
+                            id = bean.getId();
                         }
+                    }
+                    if (!TextUtils.isEmpty(id)) {
+                        MyRequest.studentRollCall(this, id);
+                    } else {
+                        listBean = new ArrayList<>();
+                        dianMingAdapter = new DianMingPAdapter(this, listBean);
+                        mPullRefreshListView.setAdapter(dianMingAdapter);
+                        dianMingAdapter.notifyDataSetChanged();
                     }
                 }
                 break;

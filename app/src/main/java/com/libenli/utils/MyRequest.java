@@ -766,8 +766,9 @@ public class MyRequest {
      * 参    数：Activity activity final String username, final String password
      * 返回值：无
      */
-    public static void saveFirst(final Context activity, final String siId, String state) {
+    public static void saveFirst(final Context activity, InterfaceHandler.StudentInfoInterface studentInfoInterface, final String siId, String state) {
         final Dialog progDialog = DialogUtils.showWaitDialog(activity);
+        final InterfaceHandler.StudentInfoInterface studentInfoInterfaces = studentInfoInterface;
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         String rollCallDate = df.format(new Date());
         Map<String, Object> params = new HashMap<>();
@@ -791,6 +792,51 @@ public class MyRequest {
             public void onResponse(String response, int id) {
                 JSONObject jsonObject = JSON.parseObject(response);
                 ToastUtil.show(activity, (String) jsonObject.get("msg"));
+                studentInfoInterfaces.deleteStudent();
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                ToastUtil.show(activity, "服务器有错误，请稍候再试");
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+        });
+    }
+
+    /**
+     * 方法名：updateDianMing
+     * 功    能：已经操作过的点名
+     * 参    数：Activity activity final String username, final String password
+     * 返回值：无
+     */
+    public static void updateDianMing(final Context activity, InterfaceHandler.StudentInfoInterface studentInfoInterface, final String siId, String state) {
+        final Dialog progDialog = DialogUtils.showWaitDialog(activity);
+        final InterfaceHandler.StudentInfoInterface studentInfoInterfaces = studentInfoInterface;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("id", siId);
+            params.put("state", state);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String[] str = {siId, SHA1, state};
+        StringBuffer sb = new StringBuffer();
+        Arrays.sort(str);
+        for (String string : str) {
+            sb.append(string);
+        }
+        String url = UrlConfig.URL_UPDATETUDENTSAVE + "sign=" + MyUtils.getSha1(sb.toString());
+        OkHttpUtils.post().url(url).params(params).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+            @Override
+            public void onResponse(String response, int id) {
+                JSONObject jsonObject = JSON.parseObject(response);
+                ToastUtil.show(activity, (String) jsonObject.get("msg"));
+                studentInfoInterfaces.deleteStudent();
                 if (progDialog.isShowing()) {
                     progDialog.dismiss();
                 }

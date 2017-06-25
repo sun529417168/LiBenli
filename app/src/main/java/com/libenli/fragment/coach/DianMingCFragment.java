@@ -88,7 +88,8 @@ public class DianMingCFragment extends BaseFragment implements InterfaceHandler.
                 Log.e("TAG", "onPullDownToRefresh");
                 // 这里写下拉刷新的任务
                 pageindex = 1;
-                requestData(pageindex);
+                studentInfoBeen = new ArrayList<>();
+                requestStudentInfo(pageindex);
                 mPullRefreshListView.onRefreshComplete();
             }
 
@@ -107,7 +108,7 @@ public class DianMingCFragment extends BaseFragment implements InterfaceHandler.
     @Override
     public void getstudentRollCall(ArrayList<StudentRollCallBean> studentRollCallBean) {
         if (studentRollCallBean == null || studentRollCallBean.size() == 0) {
-            FirstSaveAdapter adapter = new FirstSaveAdapter(context, studentInfoBeen);
+            FirstSaveAdapter adapter = new FirstSaveAdapter(context, studentInfoBeen,this);
             mPullRefreshListView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         } else {
@@ -127,12 +128,12 @@ public class DianMingCFragment extends BaseFragment implements InterfaceHandler.
                         }
                     }
                 }
-                FirstSaveAdapter adapter = new FirstSaveAdapter(context, studentInfoBeen);
+                FirstSaveAdapter adapter = new FirstSaveAdapter(context, studentInfoBeen,this);
                 mPullRefreshListView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             } else {
                 listBean = studentRollCallBean;
-                dianMingAdapter = new DianMingCAdapter(context, listBean);
+                dianMingAdapter = new DianMingCAdapter(context, listBean,this);
                 mPullRefreshListView.setAdapter(dianMingAdapter);
                 dianMingAdapter.notifyDataSetChanged();
             }
@@ -141,6 +142,7 @@ public class DianMingCFragment extends BaseFragment implements InterfaceHandler.
 
     @Override
     public void getstudentInfo(ArrayList<StudentInfoBean> studentInfoBean) {
+        CacheBean.setStudentInfoBean(studentInfoBean);
         for (int i = 0; i < studentInfoBean.size(); i++) {
             StudentInfoBean bean = new StudentInfoBean();
             bean = studentInfoBean.get(i);
@@ -152,7 +154,9 @@ public class DianMingCFragment extends BaseFragment implements InterfaceHandler.
 
     @Override
     public void deleteStudent() {
-
+        pageindex = 1;
+        studentInfoBeen = new ArrayList<>();
+        requestStudentInfo(pageindex);
     }
 
     @Override

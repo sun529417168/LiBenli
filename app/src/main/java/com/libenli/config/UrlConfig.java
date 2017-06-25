@@ -77,4 +77,9 @@ public class UrlConfig {
      * 点名当天初次操作save
      */
     public static final String URL_FIRSTSTUDENTSAVE = BaseUrl + "/studentRollCall/save?";
+
+    /**
+     * 点到信息更新update
+     */
+    public static final String URL_UPDATETUDENTSAVE = BaseUrl + "/studentRollCall/update?";
 }

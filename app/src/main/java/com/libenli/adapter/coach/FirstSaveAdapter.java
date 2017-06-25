@@ -14,6 +14,7 @@ import com.libenli.base.MyBaseAdapter;
 import com.libenli.bean.StudentInfoBean;
 import com.libenli.bean.StudentRollCallBean;
 import com.libenli.config.UrlConfig;
+import com.libenli.interfaces.InterfaceHandler;
 import com.libenli.okhttps.OkHttpUtils;
 import com.libenli.okhttps.callback.GenericsCallback;
 import com.libenli.okhttps.utils.JsonGenericsSerializator;
@@ -45,10 +46,12 @@ import static com.libenli.utils.MyRequest.SHA1;
 
 public class FirstSaveAdapter extends MyBaseAdapter {
     private ArrayList<StudentInfoBean> listBean = new ArrayList<>();
+    private InterfaceHandler.StudentInfoInterface studentInfoInterface;
 
-    public FirstSaveAdapter(Context context, List list) {
+    public FirstSaveAdapter(Context context, List list, InterfaceHandler.StudentInfoInterface studentInfoInterface) {
         super(context, list);
         listBean = (ArrayList<StudentInfoBean>) list;
+        this.studentInfoInterface = studentInfoInterface;
     }
 
     @Override
@@ -77,20 +80,29 @@ public class FirstSaveAdapter extends MyBaseAdapter {
                 zhengChang.setBackgroundColor(ContextCompat.getColor(context, R.color.gray_s));
                 break;
         }
+
         qingJia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyRequest.saveFirst(context, bean.getId(), "0");
+                if (bean.getStates() == 4) {
+                    MyRequest.saveFirst(context, studentInfoInterface, bean.getId(), "0");
+                } else {
+                    MyRequest.updateDianMing(context, studentInfoInterface, bean.getId(), "0");
+                }
             }
         });
         zhengChang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyRequest.saveFirst(context, bean.getId(), "1");
+                if (bean.getStates() == 4) {
+                    MyRequest.saveFirst(context, studentInfoInterface, bean.getId(), "1");
+                } else {
+                    MyRequest.updateDianMing(context, studentInfoInterface, bean.getId(), "1");
+                }
             }
         });
-    }
 
+    }
 
 
 }
