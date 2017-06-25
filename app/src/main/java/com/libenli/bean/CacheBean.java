@@ -8,6 +8,7 @@ import java.util.List;
 
 public class CacheBean {
     private static List<StudentInfoBean> studentInfoBean;
+    private static StudentDiIlBean studentDiIlBean;
 
     public static List<StudentInfoBean> getStudentInfoBean() {
         return studentInfoBean;
@@ -15,5 +16,13 @@ public class CacheBean {
 
     public static void setStudentInfoBean(List<StudentInfoBean> studentInfoBean) {
         CacheBean.studentInfoBean = studentInfoBean;
+    }
+
+    public static StudentDiIlBean getStudentDiIlBean() {
+        return studentDiIlBean;
+    }
+
+    public static void setStudentDiIlBean(StudentDiIlBean studentDiIlBean) {
+        CacheBean.studentDiIlBean = studentDiIlBean;
     }
 }

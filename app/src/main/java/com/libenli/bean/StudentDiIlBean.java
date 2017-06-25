@@ -3,10 +3,14 @@ package com.libenli.bean;
 import java.io.Serializable;
 
 /**
- * Created by sun_t on 2017/6/17.
+ * 文件名：StudentDiIlBean
+ * 描    述：家长端先获取DiId
+ * 作    者：stt
+ * 时    间：2017.6.10
+ * 版    本：V1.0.0
  */
 
-public class StudentInfoBean implements Serializable {
+public class StudentDiIlBean implements Serializable {
 
     /**
      * address : 哈哈
@@ -19,7 +23,6 @@ public class StudentInfoBean implements Serializable {
      * studentAge : 25
      * studentName : 李四
      * studentSex : 男
-     * ctime : 1497518855000
      */
 
     private String address;
@@ -32,25 +35,6 @@ public class StudentInfoBean implements Serializable {
     private int studentAge;
     private String studentName;
     private String studentSex;
-    private long ctime;
-    private int states;
-
-    public StudentInfoBean() {
-    }
-
-    public StudentInfoBean(String id, String studentName, int states) {
-        this.id = id;
-        this.studentName = studentName;
-        this.states = states;
-    }
-
-    public int getStates() {
-        return states;
-    }
-
-    public void setStates(int states) {
-        this.states = states;
-    }
 
     public String getAddress() {
         return address;
@@ -132,17 +116,9 @@ public class StudentInfoBean implements Serializable {
         this.studentSex = studentSex;
     }
 
-    public long getCtime() {
-        return ctime;
-    }
-
-    public void setCtime(long ctime) {
-        this.ctime = ctime;
-    }
-
     @Override
     public String toString() {
-        return "StudentInfoBean{" +
+        return "StudentDiIlBean{" +
                 "address='" + address + '\'' +
                 ", diId='" + diId + '\'' +
                 ", fightingCapacity=" + fightingCapacity +
@@ -153,8 +129,6 @@ public class StudentInfoBean implements Serializable {
                 ", studentAge=" + studentAge +
                 ", studentName='" + studentName + '\'' +
                 ", studentSex='" + studentSex + '\'' +
-                ", ctime=" + ctime +
-                ", states=" + states +
                 '}';
     }
 }

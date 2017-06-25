@@ -2,6 +2,7 @@ package com.libenli.adapter.parent;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import com.libenli.R;
 import com.libenli.base.MyBaseAdapter;
 import com.libenli.bean.DianMingBean;
+import com.libenli.bean.StudentRollCallBean;
+import com.libenli.utils.MyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +25,11 @@ import java.util.List;
  */
 
 public class DianMingPAdapter extends MyBaseAdapter {
-    private ArrayList<DianMingBean> listBean = new ArrayList<>();
+    private ArrayList<StudentRollCallBean> listBean = new ArrayList<>();
 
     public DianMingPAdapter(Context context, List list) {
         super(context, list);
-        listBean = (ArrayList<DianMingBean>) list;
+        listBean = (ArrayList<StudentRollCallBean>) list;
     }
 
     @Override
@@ -36,12 +39,18 @@ public class DianMingPAdapter extends MyBaseAdapter {
 
     @Override
     public void onInitView(View view, int position) {
+        TextView date = get(view, R.id.dianming_date);
         TextView name = get(view, R.id.dianming_name);
         Button type = get(view, R.id.dianming_type);
-        name.setText(listBean.get(position).getName());
-        type.setText(listBean.get(position).getType());
-        if (position % 2 == 0) {
-            type.setTextColor(ContextCompat.getColor(context, R.color.red));
+        date.setText(MyUtils.stampToDate(String.valueOf(listBean.get(position).getRollCallDate())));
+        name.setText(listBean.get(position).getSi().getStudentName());
+        if (listBean.get(position).getState() == 1) {
+            type.setBackgroundColor(ContextCompat.getColor(context, R.color.blue));
+            type.setText("正常");
+        }
+        if (listBean.get(position).getState() == 0) {
+            type.setBackgroundColor(ContextCompat.getColor(context, R.color.red));
+            type.setText("请假");
         }
     }
 }

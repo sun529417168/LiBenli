@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -13,6 +12,7 @@ import com.libenli.activity.MainCoachActivity;
 import com.libenli.activity.MainParentActivity;
 import com.libenli.bean.CoachInfoBean;
 import com.libenli.bean.LoginBean;
+import com.libenli.bean.StudentDiIlBean;
 import com.libenli.bean.StudentInfoBean;
 import com.libenli.bean.StudentRollCallBean;
 import com.libenli.bean.StudentScoreBean;
@@ -21,16 +21,16 @@ import com.libenli.config.UrlConfig;
 import com.libenli.interfaces.InterfaceHandler;
 import com.libenli.okhttps.OkHttpUtils;
 import com.libenli.okhttps.callback.GenericsCallback;
-import com.libenli.okhttps.callback.StringCallback;
 import com.libenli.okhttps.utils.JsonGenericsSerializator;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.Call;
-import okhttp3.Request;
 
 /**
  * 文件名：MyRequest
@@ -99,15 +99,18 @@ public class MyRequest {
                 ArrayList<LoginBean> loginBean = (ArrayList<LoginBean>) JSON.parseArray(response, LoginBean.class);
                 Intent intent;
                 if (loginBean.size() > 0 && MD5Util.MD5(password).equals(loginBean.get(0).getLoginPwd())) {
+                    SharedUtil.setString(activity, "DiId", loginBean.get(0).getDiId());
+                    SharedUtil.setInteger(activity, "type", loginBean.get(0).getType());
                     switch (loginBean.get(0).getType()) {
                         case 2:
-                            SharedUtil.setString(activity, "DiId", loginBean.get(0).getDiId());
                             intent = new Intent(activity, MainCoachActivity.class);
                             activity.startActivity(intent);
+                            activity.finish();
                             break;
                         case 3:
                             intent = new Intent(activity, MainParentActivity.class);
                             activity.startActivity(intent);
+                            activity.finish();
                             break;
                     }
                 } else {
@@ -133,21 +136,102 @@ public class MyRequest {
 
     /**
      * 方法名：studentRollCall
-     * 功    能：点到列表
+     * 功    能：点到列表教练端
      * 参    数：Activity activity final String username, final String password
      * 返回值：无
      */
     public static void studentRollCall(final Context context, InterfaceHandler.StudentRollCallInterface studentRollCalls, final String diId, String date, int size, int pn) {
         final Dialog progDialog = DialogUtils.showWaitDialog(context);
         final InterfaceHandler.StudentRollCallInterface studentRollCall = studentRollCalls;
-        String[] str = {diId, SHA1, date};
+        String[] str = {diId, SHA1, date, "1"};
         StringBuffer sb = new StringBuffer();
         Arrays.sort(str);
         for (String string : str) {
             sb.append(string);
         }
-//        String url = UrlConfig.URL_STUDENTROLLCALL + "diId=" + diId + "&sign=" + MyUtils.getSha1(sb.toString());
         String url = UrlConfig.URL_STUDENTROLLCALL + "diId=" + diId + "&rollCallDate=" + date + "&status=" + 1 + "&sign=" + MyUtils.getSha1(sb.toString()) + "&size=" + size + "&pn=" + pn;
+        OkHttpUtils.get().url(url).id(100).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+            @Override
+            public void onResponse(String response, int id) {
+                Log.i("studentRollCall", response);
+                if ("[]".equals(response)) {
+                    studentRollCall.getstudentRollCall(null);
+                } else {
+                    ArrayList<StudentRollCallBean> studentRollCallBean = (ArrayList<StudentRollCallBean>) JSON.parseArray(response, StudentRollCallBean.class);
+                    studentRollCall.getstudentRollCall(studentRollCallBean);
+                }
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                ToastUtil.show(context, "服务器有错误，请稍候再试");
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+        });
+    }
+
+    /**
+     * 方法名：studentRollCall
+     * 功    能：点到列表教练端,按照姓名查询
+     * 参    数：Activity activity final String username, final String password
+     * 返回值：无
+     */
+    public static void studentRollCall(final Activity context, final String diId) {
+        final Dialog progDialog = DialogUtils.showWaitDialog(context);
+        final InterfaceHandler.StudentRollCallInterface studentRollCall = (InterfaceHandler.StudentRollCallInterface) context;
+        String[] str = {diId, SHA1, "1"};
+        StringBuffer sb = new StringBuffer();
+        Arrays.sort(str);
+        for (String string : str) {
+            sb.append(string);
+        }
+        String url = UrlConfig.URL_STUDENTROLLCALL + "siId=" + diId + "&status=" + 1 + "&sign=" + MyUtils.getSha1(sb.toString()) + "&size=" + 300 + "&pn=" + 1;
+        OkHttpUtils.get().url(url).id(100).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+            @Override
+            public void onResponse(String response, int id) {
+                Log.i("studentRollCallName", response);
+                if ("[]".equals(response)) {
+                    studentRollCall.getstudentRollCall(null);
+                } else {
+                    ArrayList<StudentRollCallBean> studentRollCallBean = (ArrayList<StudentRollCallBean>) JSON.parseArray(response, StudentRollCallBean.class);
+                    studentRollCall.getstudentRollCall(studentRollCallBean);
+                }
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                ToastUtil.show(context, "服务器有错误，请稍候再试");
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+        });
+    }
+
+    /**
+     * 方法名：studentRollCall
+     * 功    能：点到列表家长端
+     * 参    数：Activity activity final String username, final String password
+     * 返回值：无
+     */
+    public static void studentRollCallP(final Context context, InterfaceHandler.StudentRollCallInterface studentRollCalls, final String diId, int size, int pn) {
+        final Dialog progDialog = DialogUtils.showWaitDialog(context);
+        final InterfaceHandler.StudentRollCallInterface studentRollCall = studentRollCalls;
+        String[] str = {diId, SHA1, "1"};
+        StringBuffer sb = new StringBuffer();
+        Arrays.sort(str);
+        for (String string : str) {
+            sb.append(string);
+        }
+        String url = UrlConfig.URL_STUDENTROLLCALL + "siId=" + diId + "&status=" + 1 + "&sign=" + MyUtils.getSha1(sb.toString()) + "&size=" + size + "&pn=" + pn;
         OkHttpUtils.get().url(url).id(100).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
             @Override
             public void onResponse(String response, int id) {
@@ -170,7 +254,7 @@ public class MyRequest {
     }
 
     /**
-     * 方法名：studentRollCall
+     * 方法名：studentInfo
      * 功    能：战力列表/学员信息列表接口
      * 参    数：Activity activity final String username, final String password
      * 返回值：无
@@ -207,14 +291,90 @@ public class MyRequest {
     }
 
     /**
+     * 方法名：studentInfoDiId
+     * 功    能：获取DiId的接口
+     * 参    数：Activity activity final String username, final String password
+     * 返回值：无
+     */
+    public static void studentInfoDiId(final Context context, InterfaceHandler.GetDiIdInterface studentRollCalls, final String id) {
+        final Dialog progDialog = DialogUtils.showWaitDialog(context);
+        final InterfaceHandler.GetDiIdInterface studentDiId = studentRollCalls;
+        String[] str = {id, SHA1};
+        StringBuffer sb = new StringBuffer();
+        Arrays.sort(str);
+        for (String string : str) {
+            sb.append(string);
+        }
+        String url = UrlConfig.URL_STUDENTINFO + "id=" + id + "&sign=" + MyUtils.getSha1(sb.toString());
+        OkHttpUtils.get().url(url).id(100).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+            @Override
+            public void onResponse(String response, int id) {
+                Log.i("studentInfoDiId", response);
+                ArrayList<StudentDiIlBean> studntDiIlBeen = (ArrayList<StudentDiIlBean>) JSON.parseArray(response, StudentDiIlBean.class);
+                if (studntDiIlBeen.size() > 0) {
+                    studentDiId.getDiIdInfo(studntDiIlBeen.get(0));
+                }
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                ToastUtil.show(context, "服务器有错误，请稍候再试");
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+        });
+    }
+
+    /**
      * 方法名：studentRollCall
-     * 功    能：战力列表/学员信息列表接口
+     * 功    能：学生成绩列表
      * 参    数：Activity activity final String username, final String password
      * 返回值：无
      */
     public static void studentScore(final Context context, final String diId, int size, int pn) {
         final Dialog progDialog = DialogUtils.showWaitDialog(context);
         final InterfaceHandler.StudentScoreInterface studentInfo = (InterfaceHandler.StudentScoreInterface) context;
+        String[] str = {diId, SHA1, "1"};
+        StringBuffer sb = new StringBuffer();
+        Arrays.sort(str);
+        for (String string : str) {
+            sb.append(string);
+        }
+        String url = UrlConfig.URL_STUDENTSCORE + "siId=" + diId + "&status=" + 1 + "&sign=" + MyUtils.getSha1(sb.toString()) + "&size=" + size + "&pn=" + pn;
+        OkHttpUtils.get().url(url).id(100).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+            @Override
+            public void onResponse(String response, int id) {
+                Log.i("studentScore", response);
+                ArrayList<StudentScoreBean> studentScoreBean = (ArrayList<StudentScoreBean>) JSON.parseArray(response, StudentScoreBean.class);
+                studentInfo.getstudentInfo(studentScoreBean);
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                ToastUtil.show(context, "服务器有错误，请稍候再试");
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+        });
+    }
+
+    /**
+     * 方法名：studentRollCall
+     * 功    能：学生成绩列表
+     * 参    数：Activity activity final String username, final String password
+     * 返回值：无
+     */
+    public static void studentScore(final Context context, InterfaceHandler.StudentScoreInterface studentInfos, final String diId, int size, int pn) {
+        final Dialog progDialog = DialogUtils.showWaitDialog(context);
+        final InterfaceHandler.StudentScoreInterface studentInfo = studentInfos;
         String[] str = {diId, SHA1, "1"};
         StringBuffer sb = new StringBuffer();
         Arrays.sort(str);
@@ -585,6 +745,52 @@ public class MyRequest {
                 if (jsonObject.getBoolean("data")) {
                     activity.finish();
                 }
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                ToastUtil.show(activity, "服务器有错误，请稍候再试");
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+        });
+    }
+
+    /**
+     * 方法名：saveFirst
+     * 功    能：点名当天初次操作save
+     * 参    数：Activity activity final String username, final String password
+     * 返回值：无
+     */
+    public static void saveFirst(final Context activity, final String siId, String state) {
+        final Dialog progDialog = DialogUtils.showWaitDialog(activity);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        String rollCallDate = df.format(new Date());
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("siId", siId);
+            params.put("diId", SharedUtil.getString(activity, "DiId"));
+            params.put("rollCallDate", rollCallDate);
+            params.put("state", state);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String[] str = {SharedUtil.getString(activity, "DiId"), siId, SHA1, rollCallDate, state};
+        StringBuffer sb = new StringBuffer();
+        Arrays.sort(str);
+        for (String string : str) {
+            sb.append(string);
+        }
+        String url = UrlConfig.URL_FIRSTSTUDENTSAVE + "sign=" + MyUtils.getSha1(sb.toString());
+        OkHttpUtils.post().url(url).params(params).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+            @Override
+            public void onResponse(String response, int id) {
+                JSONObject jsonObject = JSON.parseObject(response);
+                ToastUtil.show(activity, (String) jsonObject.get("msg"));
                 if (progDialog.isShowing()) {
                     progDialog.dismiss();
                 }

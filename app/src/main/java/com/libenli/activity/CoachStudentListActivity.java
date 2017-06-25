@@ -49,7 +49,7 @@ public class CoachStudentListActivity extends BaseActivity implements View.OnCli
     }
 
     private void requestData(int pageindex) {
-        MyRequest.studentInfo(this, this, SharedUtil.getString(this, "DiId"), 10, pageindex);
+        MyRequest.studentInfo(this, this, SharedUtil.getString(this, "DiId"), 300, pageindex);
     }
 
 
@@ -81,9 +81,9 @@ public class CoachStudentListActivity extends BaseActivity implements View.OnCli
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 Log.e("TAG", "onPullUpToRefresh");
                 // 这里写上拉加载更多的任务
-                pageindex++;
-                requestData(pageindex);
-                adapter.notifyDataSetChanged();
+//                pageindex++;
+//                requestData(pageindex);
+//                adapter.notifyDataSetChanged();
                 mPullRefreshListView.onRefreshComplete();
             }
         });
@@ -108,22 +108,25 @@ public class CoachStudentListActivity extends BaseActivity implements View.OnCli
         if (studentInfoBean == null) {
             return;
         }
-        if (studentInfoBean.size() == 0) {
-            mPullRefreshListView.setVisibility(View.GONE);
-        } else {
-            mPullRefreshListView.setVisibility(View.VISIBLE);
-            if (pageindex == 1) {
-                listBean = studentInfoBean;
-                adapter = new CoachStudentListAdapter(this, listBean);
-                mPullRefreshListView.setAdapter(adapter);
-            } else if (pageindex > 1 && studentInfoBean.size() != 0) {
-                listBean.addAll(studentInfoBean);
-                adapter = new CoachStudentListAdapter(this, listBean);
-                mPullRefreshListView.setAdapter(adapter);
-            } else if (pageindex > 1 && studentInfoBean.size() == 0) {
-                ToastUtil.show(this, "没有更多数据了");
-            }
-        }
+        listBean = studentInfoBean;
+        adapter = new CoachStudentListAdapter(this, listBean);
+        mPullRefreshListView.setAdapter(adapter);
+//        if (studentInfoBean.size() == 0) {
+//            mPullRefreshListView.setVisibility(View.GONE);
+//        } else {
+//            mPullRefreshListView.setVisibility(View.VISIBLE);
+//            if (pageindex == 1) {
+//                listBean = studentInfoBean;
+//                adapter = new CoachStudentListAdapter(this, listBean);
+//                mPullRefreshListView.setAdapter(adapter);
+//            } else if (pageindex > 1 && studentInfoBean.size() != 0) {
+//                listBean.addAll(studentInfoBean);
+//                adapter = new CoachStudentListAdapter(this, listBean);
+//                mPullRefreshListView.setAdapter(adapter);
+//            } else if (pageindex > 1 && studentInfoBean.size() == 0) {
+//                ToastUtil.show(this, "没有更多数据了");
+//            }
+//        }
     }
 
     @Override

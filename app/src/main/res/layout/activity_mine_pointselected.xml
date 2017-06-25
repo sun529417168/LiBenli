@@ -17,12 +17,14 @@
         android:weightSum="2">
 
         <LinearLayout
+            android:id="@+id/search_name_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">
 
             <TextView
+                android:id="@+id/mine_search_titleName"
                 style="@style/notice_title"
                 android:text="@string/pointselect_name"
                 android:textColor="@color/blue4" />
@@ -34,14 +36,16 @@
             android:background="@color/gray" />
 
         <LinearLayout
+            android:id="@+id/search_time_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">
 
             <TextView
+                android:id="@+id/mine_search_titleTime"
                 style="@style/notice_title"
-                android:text="@string/pointselect_name" />
+                android:text="@string/pointselect_time" />
         </LinearLayout>
     </LinearLayout>
 
@@ -58,48 +62,19 @@
         android:orientation="vertical"
         android:paddingTop="11dp">
 
-        <RelativeLayout
-            android:id="@+id/search_textview_layout"
-            android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/searchbg">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:layout_centerInParent="true"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="15dp"
-                    android:background="@mipmap/name_search" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/scores_name"
-                    android:textColor="@color/colorb5b5b5"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </RelativeLayout>
-
+        <!--姓名搜索start-->
         <RelativeLayout
             android:id="@+id/search_edittext_layout"
             android:layout_width="match_parent"
             android:layout_height="31dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:background="@drawable/searchbg"
-            android:visibility="gone">
+            android:background="@drawable/searchbg">
 
             <EditText
                 android:id="@+id/edit_search"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:background="@null"
                 android:gravity="center_vertical"
@@ -121,10 +96,97 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:src="@mipmap/name_search" />
+
+            <Button
+                android:id="@+id/mine_pointselected_nameSearch"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_blue"
+                android:text="@string/pointselect_search"
+                android:textColor="@color/white" />
         </RelativeLayout>
+        <!--姓名搜索end-->
+
+        <!--时间搜索start-->
+        <RelativeLayout
+            android:id="@+id/search_textview_layout"
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/searchbg"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/mine_pointselected_startTime"
+                android:layout_width="100dp"
+                android:layout_height="29dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:hint="请选择开始时间"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="12sp" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="10dp"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/mine_pointselected_startTime"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/mine_pointselected_endTime"
+                android:layout_width="100dp"
+                android:layout_height="29dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@+id/view4"
+                android:background="@color/white"
+                android:gravity="center"
+                android:hint="请选择结束时间"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/mine_pointselected_timeSearch"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_blue"
+                android:text="@string/pointselect_search"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+        <!--时间搜索end-->
+
 
         <View
             style="@style/line_color_gray"
             android:layout_marginTop="10dp" />
     </LinearLayout>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/mine_pointselected_refresh_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view3"
+        android:cacheColorHint="#00000000"
+        android:divider="#19000000"
+        android:dividerHeight="4dp"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrListViewExtrasEnabled="false"
+        ptr:ptrMode="both"
+        ptr:ptrScrollingWhileRefreshingEnabled="true" />
 </LinearLayout>

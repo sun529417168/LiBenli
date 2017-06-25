@@ -156,8 +156,24 @@ public class MyUtils {
      */
     public static String stampToDate(String s) {
         String res;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
-                "yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        long lt = new Long(s);
+        Date date = new Date(lt);
+        res = simpleDateFormat.format(date);
+        return res;
+    }
+
+    /**
+     * 方法名：dateToStamp
+     * 功 能：将时间戳转换为时间
+     * 参 数：String s
+     * 返回值：String
+     * 作 者：stt
+     * 时间：2017.3.28
+     */
+    public static String stampToDate2(String s) {
+        String res;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long lt = new Long(s);
         Date date = new Date(lt);
         res = simpleDateFormat.format(date);
@@ -174,8 +190,7 @@ public class MyUtils {
      */
     public static String dateToStamp(String s) {
         String res = null;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
-                "yyyy/MM/dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date;
         try {
             date = simpleDateFormat.parse(s);
@@ -186,6 +201,28 @@ public class MyUtils {
             e.printStackTrace();
         }
         return res;
+    }
+
+    /**
+     * 方法名：dateToStamp
+     * 功 能：将时间转换为时间戳
+     * 参 数：String s
+     * 返回值：String
+     * 作 者：stt
+     * 时间：2017.3.28
+     */
+    public static long dateToStamps(String s) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date;
+        try {
+            date = simpleDateFormat.parse(s);
+            long ts = date.getTime();
+            return ts;
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     /**

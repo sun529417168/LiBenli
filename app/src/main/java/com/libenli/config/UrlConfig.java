@@ -9,8 +9,10 @@ package com.libenli.config;
  */
 
 public class UrlConfig {
-    public static final String BaseUrl = "https://106.3.45.222:9443/DojoMS/interfac";// 正式域名
 
+
+
+    public static final String BaseUrl = "https://106.3.45.222:9443/DojoMS/interfac";// 正式域名
 
     /**
      * 登陆接口
@@ -70,4 +72,9 @@ public class UrlConfig {
      * 学员信息更新
      */
     public static final String URL_UPDATESTUDENTINFO = BaseUrl + "/studentInfo/update?";
+
+    /**
+     * 点名当天初次操作save
+     */
+    public static final String URL_FIRSTSTUDENTSAVE = BaseUrl + "/studentRollCall/save?";
 }

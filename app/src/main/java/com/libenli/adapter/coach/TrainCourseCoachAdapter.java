@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 文件名：InfoAdapter
+ * 文件名：ResultsInfoAdapter
  * 描    述：训练科目列表适配器
  * 作    者：stt
  * 时    间：2017.4.30

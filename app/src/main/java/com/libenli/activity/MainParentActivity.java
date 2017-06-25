@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.libenli.R;
 import com.libenli.base.BaseFragmentActivity;
 import com.libenli.fragment.parent.DianMingPFragment;
-import com.libenli.fragment.parent.InfoFragment;
+import com.libenli.fragment.parent.ResultsInfoFragment;
 import com.libenli.fragment.parent.RankFragment;
 
 import java.util.ArrayList;
@@ -122,12 +122,12 @@ public class MainParentActivity extends BaseFragmentActivity {
                 dianDaoText.setTextColor(ContextCompat.getColor(context, R.color.blue));
                 break;
             case 1:
-                infoImage.setImageResource(R.mipmap.me_h);
-                infoText.setTextColor(ContextCompat.getColor(context, R.color.blue));
-                break;
-            case 2:
                 rankImage.setImageResource(R.mipmap.rank_h);
                 rankText.setTextColor(ContextCompat.getColor(context, R.color.blue));
+                break;
+            case 2:
+                infoImage.setImageResource(R.mipmap.me_h);
+                infoText.setTextColor(ContextCompat.getColor(context, R.color.blue));
                 break;
         }
     }
@@ -155,8 +155,8 @@ public class MainParentActivity extends BaseFragmentActivity {
 
 
         fragmentList.add(new DianMingPFragment());
-        fragmentList.add(new InfoFragment());
         fragmentList.add(new RankFragment());
+        fragmentList.add(new ResultsInfoFragment());
 
         layout_dianDao.setOnClickListener(new View.OnClickListener() {
 
@@ -167,7 +167,7 @@ public class MainParentActivity extends BaseFragmentActivity {
             }
         });
 
-        layout_info.setOnClickListener(new View.OnClickListener() {
+        layout_rank.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -176,7 +176,7 @@ public class MainParentActivity extends BaseFragmentActivity {
             }
         });
 
-        layout_rank.setOnClickListener(new View.OnClickListener() {
+        layout_info.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -184,6 +184,7 @@ public class MainParentActivity extends BaseFragmentActivity {
                 viewPager.setCurrentItem(2);
             }
         });
+
 
     }
 

@@ -13,11 +13,10 @@ import android.widget.TextView;
 
 import com.libenli.R;
 import com.libenli.base.BaseFragmentActivity;
-import com.libenli.fragment.MineFragment;
+import com.libenli.fragment.coach.MineFragment;
 import com.libenli.fragment.coach.DianMingCFragment;
 import com.libenli.fragment.coach.RankCoachFragment;
 import com.libenli.fragment.coach.TrainCourseCoachFragment;
-import com.libenli.fragment.parent.InfoFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,8 +76,8 @@ public class MainCoachActivity extends BaseFragmentActivity {
 
 
         //初始化第一个
-        dianDaoImage.setImageResource(R.mipmap.dianying_h);
-        dianDaoText.setTextColor(ContextCompat.getColor(context, R.color.blue));
+        rankImage.setImageResource(R.mipmap.rank_h);
+        rankText.setTextColor(ContextCompat.getColor(context, R.color.blue));
         changeBottom(fragmentIndex);
         viewPager.setCurrentItem(fragmentIndex);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -122,12 +121,12 @@ public class MainCoachActivity extends BaseFragmentActivity {
 
         switch (position) {
             case 0:
-                dianDaoImage.setImageResource(R.mipmap.dianying_h);
-                dianDaoText.setTextColor(ContextCompat.getColor(context, R.color.blue));
-                break;
-            case 1:
                 rankImage.setImageResource(R.mipmap.rank_h);
                 rankText.setTextColor(ContextCompat.getColor(context, R.color.blue));
+                break;
+            case 1:
+                dianDaoImage.setImageResource(R.mipmap.dianying_h);
+                dianDaoText.setTextColor(ContextCompat.getColor(context, R.color.blue));
                 break;
             case 2:
                 courseImage.setImageResource(R.mipmap.course_h);
@@ -165,12 +164,12 @@ public class MainCoachActivity extends BaseFragmentActivity {
         layout_mine = (LinearLayout) findViewById(R.id.main_coach_layout_mine);
 
 
-        fragmentList.add(new DianMingCFragment());
         fragmentList.add(new RankCoachFragment());
+        fragmentList.add(new DianMingCFragment());
         fragmentList.add(new TrainCourseCoachFragment());
         fragmentList.add(new MineFragment());
 
-        layout_dianDao.setOnClickListener(new View.OnClickListener() {
+        layout_rank.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -179,7 +178,7 @@ public class MainCoachActivity extends BaseFragmentActivity {
             }
         });
 
-        layout_rank.setOnClickListener(new View.OnClickListener() {
+        layout_dianDao.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {

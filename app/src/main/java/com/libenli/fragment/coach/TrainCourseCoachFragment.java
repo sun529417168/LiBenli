@@ -17,11 +17,8 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.libenli.R;
 import com.libenli.activity.AddTrainCourseCoachActivity;
-import com.libenli.adapter.coach.RankCoachAdapter;
 import com.libenli.adapter.coach.TrainCourseCoachAdapter;
-import com.libenli.adapter.parent.InfoAdapter;
 import com.libenli.base.BaseFragment;
-import com.libenli.bean.StudentInfoBean;
 import com.libenli.bean.TrainCourseCoachBean;
 import com.libenli.interfaces.InterfaceHandler;
 import com.libenli.utils.MyRequest;
@@ -62,7 +59,7 @@ public class TrainCourseCoachFragment extends BaseFragment implements InterfaceH
     }
 
     private void requestData(int pageindex) {
-        MyRequest.project(context, this, SharedUtil.getString(context, "DiId"), 10, pageindex);
+        MyRequest.project(context, this, SharedUtil.getString(context, "DiId"), 300, pageindex);
     }
 
 
@@ -91,9 +88,9 @@ public class TrainCourseCoachFragment extends BaseFragment implements InterfaceH
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 Log.e("TAG", "onPullUpToRefresh");
                 // 这里写上拉加载更多的任务
-                pageindex++;
-                requestData(pageindex);
-                adapter.notifyDataSetChanged();
+//                pageindex++;
+//                requestData(pageindex);
+//                adapter.notifyDataSetChanged();
                 mPullRefreshListView.onRefreshComplete();
             }
         });
@@ -110,22 +107,25 @@ public class TrainCourseCoachFragment extends BaseFragment implements InterfaceH
         if (trainCourseCoachBean == null) {
             return;
         }
-        if (trainCourseCoachBean.size() == 0) {
-            mPullRefreshListView.setVisibility(View.GONE);
-        } else {
-            mPullRefreshListView.setVisibility(View.VISIBLE);
-            if (pageindex == 1) {
-                listBean = trainCourseCoachBean;
-                adapter = new TrainCourseCoachAdapter(context, listBean);
-                mPullRefreshListView.setAdapter(adapter);
-            } else if (pageindex > 1 && trainCourseCoachBean.size() != 0) {
-                listBean.addAll(trainCourseCoachBean);
-                adapter = new TrainCourseCoachAdapter(context, listBean);
-                mPullRefreshListView.setAdapter(adapter);
-            } else if (pageindex > 1 && trainCourseCoachBean.size() == 0) {
-                ToastUtil.show(context, "没有更多数据了");
-            }
-        }
+        listBean = trainCourseCoachBean;
+        adapter = new TrainCourseCoachAdapter(context, listBean);
+        mPullRefreshListView.setAdapter(adapter);
+//        if (trainCourseCoachBean.size() == 0) {
+//            mPullRefreshListView.setVisibility(View.GONE);
+//        } else {
+//            mPullRefreshListView.setVisibility(View.VISIBLE);
+//            if (pageindex == 1) {
+//                listBean = trainCourseCoachBean;
+//                adapter = new TrainCourseCoachAdapter(context, listBean);
+//                mPullRefreshListView.setAdapter(adapter);
+//            } else if (pageindex > 1 && trainCourseCoachBean.size() != 0) {
+//                listBean.addAll(trainCourseCoachBean);
+//                adapter = new TrainCourseCoachAdapter(context, listBean);
+//                mPullRefreshListView.setAdapter(adapter);
+//            } else if (pageindex > 1 && trainCourseCoachBean.size() == 0) {
+//                ToastUtil.show(context, "没有更多数据了");
+//            }
+//        }
     }
 
     @Override

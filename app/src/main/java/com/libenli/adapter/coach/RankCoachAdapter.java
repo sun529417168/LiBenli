@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 文件名：InfoAdapter
+ * 文件名：ResultsInfoAdapter
  * 描    述：成绩信息适配器
  * 作    者：stt
  * 时    间：2017.4.30
@@ -41,7 +41,7 @@ public class RankCoachAdapter extends MyBaseAdapter {
         TextView NO = get(view, R.id.info_NO);
         TextView name = get(view, R.id.info_name);
         TextView score = get(view, R.id.info_score);
-        NO.setText(position + "");
+        NO.setText(Integer.toString(position + 1));
         name.setText(listBean.get(position).getStudentName());
         score.setText(listBean.get(position).getFightingCapacity() + "");
         view.setOnClickListener(new View.OnClickListener() {

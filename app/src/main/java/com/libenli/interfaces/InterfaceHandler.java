@@ -4,6 +4,7 @@ import com.libenli.bean.CoachInfoBean;
 import com.libenli.bean.StudentInfoBean;
 import com.libenli.bean.StudentRollCallBean;
 import com.libenli.bean.StudentScoreBean;
+import com.libenli.bean.StudentDiIlBean;
 import com.libenli.bean.TrainCourseCoachBean;
 
 import java.util.ArrayList;
@@ -58,5 +59,12 @@ public class InterfaceHandler {
      */
     public static interface DojoInfoUpdateInterface {
         void getDojoInfo(ArrayList<CoachInfoBean> coachInfoBean);
+    }
+
+    /**
+     * 家长端先获取DiId的接口
+     */
+    public static interface GetDiIdInterface {
+        void getDiIdInfo(StudentDiIlBean studentDiIlBean);
     }
 }

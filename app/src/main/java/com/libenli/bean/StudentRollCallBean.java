@@ -33,6 +33,7 @@ public class StudentRollCallBean implements Serializable {
     private int state;
     private int status;
 
+
     public String getDiId() {
         return diId;
     }

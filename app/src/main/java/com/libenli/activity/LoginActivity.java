@@ -3,7 +3,9 @@ package com.libenli.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -44,11 +46,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         passwordEdit = (EditText) findViewById(R.id.login_edpass);
         loginLayout = (RelativeLayout) findViewById(R.id.login_rrbtn);
         loginLayout.setOnClickListener(this);
-        if (!TextUtils.isEmpty(SharedUtil.getString(this, "DiId"))) {
-            Intent intent = new Intent(this, MainCoachActivity.class);
-            startActivity(intent);
-            BenLiApp.finishTop();
-        }
+        usernameEdit.addTextChangedListener(new EditChangedListener());
     }
 
 
@@ -70,4 +68,28 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 break;
         }
     }
+
+    class EditChangedListener implements TextWatcher {
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            if (s.length() > 2) {
+                loginLayout.setBackgroundResource(R.mipmap.login_btn_s);
+            }else{
+                loginLayout.setBackgroundResource(R.mipmap.login_btn_n);
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    }
+
+    ;
 }

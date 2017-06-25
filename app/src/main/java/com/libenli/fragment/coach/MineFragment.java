@@ -1,4 +1,4 @@
-package com.libenli.fragment;
+package com.libenli.fragment.coach;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.libenli.R;
 import com.libenli.activity.CoachStudentListActivity;
+import com.libenli.activity.DianDaoSearchActivity;
 import com.libenli.activity.LoginActivity;
 import com.libenli.activity.CoachUpdateInfoActivity;
 import com.libenli.base.BaseFragment;
@@ -33,7 +34,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     private TextView tv_title;
     private RelativeLayout rl_back;
     private TextView tv_exit;
-    private RelativeLayout update, studentList;
+    private RelativeLayout update, studentList,searchDianDao;
 
     @Override
     protected View setView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +61,8 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         update.setOnClickListener(this);
         studentList = (RelativeLayout) rootView.findViewById(R.id.rl_me_list);
         studentList.setOnClickListener(this);
+        searchDianDao = (RelativeLayout) rootView.findViewById(R.id.rl_me_info);
+        searchDianDao.setOnClickListener(this);
     }
 
 
@@ -78,6 +81,10 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                 intent = new Intent(context, CoachStudentListActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.rl_me_info:
+                intent = new Intent(context, DianDaoSearchActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 
@@ -88,8 +95,9 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(context, LoginActivity.class);
                 SharedUtil.setString(context, "DiId", "");
+                SharedUtil.setInteger(context, "type", 0);
+                Intent intent = new Intent(context, LoginActivity.class);
                 startActivity(intent);
                 getActivity().finish();
             }

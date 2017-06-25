@@ -103,9 +103,6 @@ public class RankCoachActivity extends BaseActivity implements View.OnClickListe
         if (studentScoreBean == null) {
             return;
         }
-        for (StudentScoreBean bean : studentScoreBean) {
-            Log.i("战斗力数据", bean.toString());
-        }
         if (studentScoreBean.size() == 0) {
             mPullRefreshListView.setVisibility(View.GONE);
         } else {

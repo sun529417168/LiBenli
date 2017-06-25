@@ -13,6 +13,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.libenli.R;
 import com.libenli.adapter.coach.DianMingCAdapter;
+import com.libenli.adapter.coach.FirstSaveAdapter;
 import com.libenli.adapter.coach.StudentInfoAdapter;
 import com.libenli.adapter.parent.DianMingPAdapter;
 import com.libenli.base.BaseFragment;
@@ -28,6 +29,7 @@ import com.libenli.utils.ToastUtil;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 
 /**
@@ -47,6 +49,7 @@ public class DianMingCFragment extends BaseFragment implements InterfaceHandler.
     //刷新控件
     private PullToRefreshListView mPullRefreshListView;
     private int pageindex = 1;//页码数
+    private ArrayList<StudentInfoBean> studentInfoBeen = new ArrayList<>();
 
     @Override
     protected View setView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,17 +60,16 @@ public class DianMingCFragment extends BaseFragment implements InterfaceHandler.
 
     @Override
     protected void setDate() {
-//        requestData(pageindex);
         requestStudentInfo(pageindex);
     }
 
     private void requestData(int pageindex) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
-        MyRequest.studentRollCall(context, this, SharedUtil.getString(context, "DiId"), df.format(new Date()), 10, pageindex);
+        MyRequest.studentRollCall(context, this, SharedUtil.getString(context, "DiId"), df.format(new Date()), 300, pageindex);
     }
 
     private void requestStudentInfo(int pageindex) {
-        MyRequest.studentInfo(context, this, SharedUtil.getString(context, "DiId"), 10, pageindex);
+        MyRequest.studentInfo(context, this, SharedUtil.getString(context, "DiId"), 300, pageindex);
     }
 
     @Override
@@ -87,7 +89,6 @@ public class DianMingCFragment extends BaseFragment implements InterfaceHandler.
                 // 这里写下拉刷新的任务
                 pageindex = 1;
                 requestData(pageindex);
-                dianMingAdapter.notifyDataSetChanged();
                 mPullRefreshListView.onRefreshComplete();
             }
 
@@ -95,9 +96,8 @@ public class DianMingCFragment extends BaseFragment implements InterfaceHandler.
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 Log.e("TAG", "onPullUpToRefresh");
                 // 这里写上拉加载更多的任务
-                pageindex++;
-                requestData(pageindex);
-                dianMingAdapter.notifyDataSetChanged();
+//                pageindex++;
+//                requestData(pageindex);
                 mPullRefreshListView.onRefreshComplete();
             }
         });
@@ -106,41 +106,58 @@ public class DianMingCFragment extends BaseFragment implements InterfaceHandler.
 
     @Override
     public void getstudentRollCall(ArrayList<StudentRollCallBean> studentRollCallBean) {
-        if (studentRollCallBean == null) {
-            return;
-        }
-        if (studentRollCallBean.size() == 0) {
-            mPullRefreshListView.setVisibility(View.GONE);
-            nothing.setVisibility(View.VISIBLE);
+        if (studentRollCallBean == null || studentRollCallBean.size() == 0) {
+            FirstSaveAdapter adapter = new FirstSaveAdapter(context, studentInfoBeen);
+            mPullRefreshListView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
         } else {
-            mPullRefreshListView.setVisibility(View.VISIBLE);
-            nothing.setVisibility(View.GONE);
-            if (pageindex == 1) {
+            /**
+             * 这是在网络的数据小于本地的数据的情况下
+             * 用网络的数据匹配本地的数据，如果网络的等于本地的先remove掉在add那条到本地
+             */
+            if (studentRollCallBean.size() < studentInfoBeen.size()) {
+                for (int i = 0; i < studentRollCallBean.size(); i++) {
+                    StudentRollCallBean bean = studentRollCallBean.get(i);
+                    for (int j = 0; j < studentInfoBeen.size(); j++) {
+                        StudentInfoBean infoBean = studentInfoBeen.get(j);
+                        if (bean.getSi().getId().equals(infoBean.getId())) {//如果相同的话
+                            studentInfoBeen.remove(j);//remove相同的
+                            StudentInfoBean stuInfoBean = new StudentInfoBean(bean.getId(), bean.getSi().getStudentName(), bean.getState());
+                            studentInfoBeen.add(stuInfoBean);//添加网络的到本地
+                        }
+                    }
+                }
+                FirstSaveAdapter adapter = new FirstSaveAdapter(context, studentInfoBeen);
+                mPullRefreshListView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+            } else {
                 listBean = studentRollCallBean;
                 dianMingAdapter = new DianMingCAdapter(context, listBean);
                 mPullRefreshListView.setAdapter(dianMingAdapter);
-            } else if (pageindex > 1 && studentRollCallBean.size() != 0) {
-                listBean.addAll(studentRollCallBean);
-                dianMingAdapter = new DianMingCAdapter(context, listBean);
-                mPullRefreshListView.setAdapter(dianMingAdapter);
-            } else if (pageindex > 1 && studentRollCallBean.size() == 0) {
-                ToastUtil.show(context, "没有更多数据了");
+                dianMingAdapter.notifyDataSetChanged();
             }
         }
     }
 
     @Override
     public void getstudentInfo(ArrayList<StudentInfoBean> studentInfoBean) {
-        if (studentInfoBean == null) {
-            return;
+        for (int i = 0; i < studentInfoBean.size(); i++) {
+            StudentInfoBean bean = new StudentInfoBean();
+            bean = studentInfoBean.get(i);
+            bean.setStates(4);
+            studentInfoBeen.add(bean);
         }
-        CacheBean.setStudentInfoBean(studentInfoBean);
-        StudentInfoAdapter adapter = new StudentInfoAdapter(context, studentInfoBean);
-        mPullRefreshListView.setAdapter(adapter);
+        requestData(1);
     }
 
     @Override
     public void deleteStudent() {
 
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        studentInfoBeen = new ArrayList<>();
     }
 }
