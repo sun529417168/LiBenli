@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="30dp"
-                android:src="@mipmap/name_search" />
+                android:src="@mipmap/rank" />
 
             <TextView
                 android:id="@+id/main_parent_titleScore"
@@ -89,9 +89,8 @@
                     android:gravity="center">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/name_search" />
+                        style="@style/notice_image"
+                        android:src="@mipmap/jiangbei" />
 
                     <TextView
                         style="@style/notice_title"
@@ -105,9 +104,8 @@
                     android:gravity="center">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/name_search" />
+                        style="@style/notice_image"
+                        android:src="@mipmap/xingming" />
 
                     <TextView
                         style="@style/notice_title"
@@ -121,9 +119,8 @@
                     android:gravity="center">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/name_search" />
+                        style="@style/notice_image"
+                        android:src="@mipmap/rank" />
 
                     <TextView
                         style="@style/notice_title"

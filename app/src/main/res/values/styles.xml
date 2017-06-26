@@ -98,6 +98,13 @@
     </style>
     <!-- 点名界面 正常请假 end -->
 
+    <!--成绩排名img begin-->
+    <style name="notice_image">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">18dp</item>
+    </style>
+    <!--成绩排名img end-->
+
     <!--成绩排名 begin-->
     <style name="notice_title">
         <item name="android:layout_width">wrap_content</item>

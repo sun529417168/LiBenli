@@ -17,7 +17,7 @@
         <ImageButton
             android:id="@+id/ib_update"
             style="@style/me_img"
-            android:background="@mipmap/me_update" />
+            android:background="@mipmap/guan" />
 
         <TextView
             android:id="@+id/tv_update"
@@ -44,7 +44,7 @@
         <ImageButton
             android:id="@+id/ib_list"
             style="@style/me_img"
-            android:background="@mipmap/me_list" />
+            android:background="@mipmap/student" />
 
         <TextView
             android:id="@+id/tv_list"
@@ -71,7 +71,7 @@
         <ImageButton
             android:id="@+id/ib_info"
             style="@style/me_img"
-            android:background="@mipmap/me_info" />
+            android:background="@mipmap/qiandao" />
 
         <TextView
             android:id="@+id/tv_info"
@@ -98,7 +98,7 @@
         <ImageButton
             android:id="@+id/ib_contact"
             style="@style/me_img"
-            android:background="@mipmap/me_contact" />
+            android:background="@mipmap/callme" />
 
         <TextView
             android:id="@+id/tv_contact"

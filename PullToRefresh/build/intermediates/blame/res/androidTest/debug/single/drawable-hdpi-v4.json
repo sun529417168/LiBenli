@@ -1,7 +1,15 @@
 [
     {
+        "merged": "D:\\1.3.6\\LiBenli\\PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\default_indicator_rotate.png",
+        "source": "D:\\1.3.6\\LiBenli\\PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\default_indicator_rotate.png"
+    },
+    {
         "merged": "D:\\workspaceAS\\LiBenli\\PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\default_indicator_arrow.png",
         "source": "D:\\workspaceAS\\LiBenli\\PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\default_indicator_arrow.png"
+    },
+    {
+        "merged": "D:\\1.3.6\\LiBenli\\PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\default_indicator_arrow.png",
+        "source": "D:\\1.3.6\\LiBenli\\PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\default_indicator_arrow.png"
     },
     {
         "merged": "D:\\workspaceAS\\LiBenli\\PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\default_indicator_rotate.png",
