@@ -218,6 +218,48 @@ public class MyRequest {
 
     /**
      * 方法名：studentRollCall
+     * 功    能：点到列表教练端,按照时间查询
+     * 参    数：Activity activity final String username, final String password
+     * 返回值：无
+     */
+    public static void studentRollCallTime(final Activity context, String diId, final String start, final String end) {
+        final Dialog progDialog = DialogUtils.showWaitDialog(context);
+        final InterfaceHandler.StudentRollCallInterface studentRollCall = (InterfaceHandler.StudentRollCallInterface) context;
+        String[] str = {start, end, SHA1, "1", diId};
+        StringBuffer sb = new StringBuffer();
+        Arrays.sort(str);
+        for (String string : str) {
+            sb.append(string);
+        }
+        Log.i("查看sign", "開始時間=" + start + "結束時間=" + end + "id=" + diId + "sign=" + MyUtils.getSha1(sb.toString()));
+        String url = UrlConfig.URL_STUDENTROLLCALL + "diId=" + diId + "&status=" + 1 + "&startDate=" + start + "&endDate=" + end + "&sign=" + MyUtils.getSha1(sb.toString()) + "&size=" + 300 + "&pn=" + 1;
+        OkHttpUtils.get().url(url).id(100).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+            @Override
+            public void onResponse(String response, int id) {
+                Log.i("studentRollCallTime", response + "空的啥也沒有");
+                if ("[]".equals(response)) {
+                    studentRollCall.getstudentRollCall(null);
+                } else {
+                    ArrayList<StudentRollCallBean> studentRollCallBean = (ArrayList<StudentRollCallBean>) JSON.parseArray(response, StudentRollCallBean.class);
+                    studentRollCall.getstudentRollCall(studentRollCallBean);
+                }
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                ToastUtil.show(context, "服务器有错误，请稍候再试");
+                if (progDialog.isShowing()) {
+                    progDialog.dismiss();
+                }
+            }
+        });
+    }
+
+    /**
+     * 方法名：studentRollCall
      * 功    能：点到列表家长端
      * 参    数：Activity activity final String username, final String password
      * 返回值：无

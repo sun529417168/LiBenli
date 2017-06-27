@@ -27,7 +27,7 @@ public class StudentScoreBean implements Serializable {
     private int powerScore;
     private SiBean si;
     private String siId;
-    private int speedScore;
+    private float speedScore;
     private int status;
 
     public long getCtime() {
@@ -86,11 +86,11 @@ public class StudentScoreBean implements Serializable {
         this.siId = siId;
     }
 
-    public int getSpeedScore() {
+    public float getSpeedScore() {
         return speedScore;
     }
 
-    public void setSpeedScore(int speedScore) {
+    public void setSpeedScore(float speedScore) {
         this.speedScore = speedScore;
     }
 

@@ -21,7 +21,11 @@ import com.libenli.utils.ToastUtil;
 import java.util.ArrayList;
 
 /**
- * Created by sun_t on 2017/6/17.
+ * 文件名：RankCoachActivity
+ * 描    述：战力排行，力量成绩，速度成绩
+ * 作    者：stt
+ * 时    间：2017.04.24
+ * 版    本：V1.0.0
  */
 
 public class RankCoachActivity extends BaseActivity implements View.OnClickListener, InterfaceHandler.StudentScoreInterface {

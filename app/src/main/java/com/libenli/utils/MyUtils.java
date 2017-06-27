@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -259,5 +260,27 @@ public class MyUtils {
             e.printStackTrace();
         }
         return "";
+    }
+
+    /**
+     * 方法名：dateToStr
+     * 功 能：對時間進行格式化，然後轉成string類型
+     * 参 数：String s
+     * 返回值：String
+     * 作 者：stt
+     * 时间：2017.6.27
+     */
+    public static String dateToStr(String str) {
+        DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = format1.parse(str);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = formatter.format(date);
+        return dateString;
     }
 }

@@ -98,6 +98,9 @@ public class DianDaoSearchActivity extends BaseActivity implements View.OnClickL
         timeLayout = (LinearLayout) findViewById(R.id.search_time_layout);
         nameLayout.setOnClickListener(this);
         timeLayout.setOnClickListener(this);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        tv_startTime.setText(df.format(new Date()));
+        tv_endTime.setText(df.format(new Date()));
 
         mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.mine_pointselected_refresh_list);
         mPullRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
@@ -176,12 +179,11 @@ public class DianDaoSearchActivity extends BaseActivity implements View.OnClickL
                         if (MyUtils.dateToStamps(start) > MyUtils.dateToStamps(end)) {
                             ToastUtil.show(DianDaoSearchActivity.this, "开始时间不能大于结束时间");
                         } else {
-                            tv_startTime.setText(start);
-                            tv_endTime.setText(end);
+                            tv_startTime.setText(MyUtils.dateToStr(start));
+                            tv_endTime.setText(MyUtils.dateToStr(end));
                         }
                     }
-                }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c
-                        .get(Calendar.DATE), true).show();
+                }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DATE), true).show();
                 break;
             case R.id.mine_pointselected_endTime://结束时间
                 // 最后一个false表示不显示日期，如果要显示日期，最后参数可以是true或者不用输入
@@ -194,15 +196,17 @@ public class DianDaoSearchActivity extends BaseActivity implements View.OnClickL
                         if (MyUtils.dateToStamps(start) > MyUtils.dateToStamps(end)) {
                             ToastUtil.show(DianDaoSearchActivity.this, "开始时间不能大于结束时间");
                         } else {
-                            tv_startTime.setText(start);
-                            tv_endTime.setText(end);
+                            tv_startTime.setText(MyUtils.dateToStr(start));
+                            tv_endTime.setText(MyUtils.dateToStr(end));
                         }
                     }
                 }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c
                         .get(Calendar.DATE), true).show();
                 break;
             case R.id.mine_pointselected_timeSearch://按时间搜索
-                ToastUtil.show(this, "还没写好");
+                String start = tv_startTime.getText().toString().trim();
+                String end = tv_endTime.getText().toString().trim();
+                MyRequest.studentRollCallTime(this, SharedUtil.getString(this, "DiId"), start, end);
                 break;
         }
     }
