@@ -18,6 +18,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 import static android.content.Context.LOCATION_SERVICE;
@@ -282,5 +284,22 @@ public class MyUtils {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String dateString = formatter.format(date);
         return dateString;
+    }
+
+    /**
+     * 正则表达式：验证手机号
+     */
+    public static final String REGEX_MOBILE = "^((17[0-9])|(14[0-9])|(13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
+
+    /**
+     * 方法名：isMobileNO
+     * 功 能：正则表达式是否是手机号
+     * 参 数：String s
+     * 返回值：String
+     * 作 者：stt
+     * 时间：2017.6.27
+     */
+    public static boolean isMobile(String mobile) {
+        return Pattern.matches(REGEX_MOBILE, mobile);
     }
 }

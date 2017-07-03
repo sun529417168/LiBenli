@@ -488,7 +488,7 @@ public class MyRequest {
      * 参    数：Activity activity final String username, final String password
      * 返回值：无
      */
-    public static void addProject(final Activity activity, final String projectName) {
+    public static void addProject(final Activity activity, final String projectName, String sign) {
         final Dialog progDialog = DialogUtils.showWaitDialog(activity);
         Map<String, Object> params = new HashMap<>();
         try {
@@ -497,13 +497,7 @@ public class MyRequest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String[] str = {SharedUtil.getString(activity, "DiId"), SHA1, projectName};
-        StringBuffer sb = new StringBuffer();
-        Arrays.sort(str);
-        for (String string : str) {
-            sb.append(string);
-        }
-        String url = UrlConfig.URL_ADDPROJECT + "sign=" + MyUtils.getSha1(sb.toString());
+        String url = UrlConfig.URL_ADDPROJECT + "sign=" + sign;
         OkHttpUtils.post().url(url).params(params).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
             @Override
             public void onResponse(String response, int id) {
@@ -523,6 +517,37 @@ public class MyRequest {
                 if (progDialog.isShowing()) {
                     progDialog.dismiss();
                 }
+            }
+        });
+    }
+
+
+    public static void getSign(final Activity activity, final String projectName) {
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("projectName", projectName);
+            params.put("diId", SharedUtil.getString(activity, "DiId"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String[] str = {SharedUtil.getString(activity, "DiId"), SHA1, projectName};
+        StringBuffer sb = new StringBuffer();
+        Arrays.sort(str);
+        for (String string : str) {
+            sb.append(string);
+        }
+        String url = "http://106.3.45.222:8008/Sha1_Json.aspx?strSign=" + sb.toString();
+        OkHttpUtils.get().url(url).id(100).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+            @Override
+            public void onResponse(String response, int id) {
+                Log.i("getSign", response);
+                JSONObject jsonObject = JSON.parseObject(response);
+                addProject(activity, projectName, jsonObject.getString("result"));
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+
             }
         });
     }
@@ -618,7 +643,7 @@ public class MyRequest {
      */
     public static void dojoInfoUpdate(final Activity activity, String dojoName, String address, String contactName, String contactPhone) {
         final Dialog progDialog = DialogUtils.showWaitDialog(activity);
-        Map<String, Object> params = new HashMap<>();
+        final Map<String, Object> params = new HashMap<>();
         try {
             params.put("dojoName", dojoName);
             params.put("address", address);
@@ -629,31 +654,44 @@ public class MyRequest {
             e.printStackTrace();
         }
         String[] str = {SHA1, SharedUtil.getString(activity, "DiId"), dojoName, address, contactName, contactPhone};
-        StringBuffer sb = new StringBuffer();
+        final StringBuffer sb = new StringBuffer();
         Arrays.sort(str);
         for (String string : str) {
             sb.append(string);
         }
-        String url = UrlConfig.URL_DOJOINFOUPDATE + "sign=" + MyUtils.getSha1(sb.toString());
-        OkHttpUtils.post().url(url).params(params).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+        String url = "http://106.3.45.222:8008/Sha1_Json.aspx?strSign=" + sb.toString();
+        OkHttpUtils.get().url(url).id(100).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
             @Override
             public void onResponse(String response, int id) {
+                Log.i("getSign", response);
                 JSONObject jsonObject = JSON.parseObject(response);
-                ToastUtil.show(activity, (String) jsonObject.get("msg"));
-                if (jsonObject.getBoolean("data")) {
-                    activity.finish();
-                }
-                if (progDialog.isShowing()) {
-                    progDialog.dismiss();
-                }
+                String url = UrlConfig.URL_DOJOINFOUPDATE + "sign=" + jsonObject.getString("result");
+                OkHttpUtils.post().url(url).params(params).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+                    @Override
+                    public void onResponse(String response, int id) {
+                        JSONObject jsonObject = JSON.parseObject(response);
+                        ToastUtil.show(activity, (String) jsonObject.get("msg"));
+                        if (jsonObject.getBoolean("data")) {
+                            activity.finish();
+                        }
+                        if (progDialog.isShowing()) {
+                            progDialog.dismiss();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        ToastUtil.show(activity, "服务器有错误，请稍候再试");
+                        if (progDialog.isShowing()) {
+                            progDialog.dismiss();
+                        }
+                    }
+                });
             }
 
             @Override
             public void onError(Call call, Exception e, int id) {
-                ToastUtil.show(activity, "服务器有错误，请稍候再试");
-                if (progDialog.isShowing()) {
-                    progDialog.dismiss();
-                }
+
             }
         });
     }
@@ -711,7 +749,7 @@ public class MyRequest {
      */
     public static void saveStudentInfo(final Activity activity, String studentName, String studentAge, String studentSex, String phone, String address) {
         final Dialog progDialog = DialogUtils.showWaitDialog(activity);
-        Map<String, Object> params = new HashMap<>();
+        final Map<String, Object> params = new HashMap<>();
         try {
             params.put("studentName", studentName);
             params.put("diId", SharedUtil.getString(activity, "DiId"));
@@ -724,31 +762,45 @@ public class MyRequest {
             e.printStackTrace();
         }
         String[] str = {SHA1, SharedUtil.getString(activity, "DiId"), studentName, studentAge, studentSex, phone, "0", address};
-        StringBuffer sb = new StringBuffer();
+        final StringBuffer sb = new StringBuffer();
         Arrays.sort(str);
         for (String string : str) {
             sb.append(string);
         }
-        String url = UrlConfig.URL_SAVESTUDENTINFO + "sign=" + MyUtils.getSha1(sb.toString());
-        OkHttpUtils.post().url(url).params(params).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+
+        String url = "http://106.3.45.222:8008/Sha1_Json.aspx?strSign=" + sb.toString();
+        OkHttpUtils.get().url(url).id(100).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
             @Override
             public void onResponse(String response, int id) {
+                Log.i("getSign", response);
                 JSONObject jsonObject = JSON.parseObject(response);
-                ToastUtil.show(activity, (String) jsonObject.get("msg"));
-                if (jsonObject.getBoolean("data")) {
-                    activity.finish();
-                }
-                if (progDialog.isShowing()) {
-                    progDialog.dismiss();
-                }
+                String url = UrlConfig.URL_SAVESTUDENTINFO + "sign=" + jsonObject.getString("result");
+                OkHttpUtils.post().url(url).params(params).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+                    @Override
+                    public void onResponse(String response, int id) {
+                        JSONObject jsonObject = JSON.parseObject(response);
+                        ToastUtil.show(activity, (String) jsonObject.get("msg"));
+                        if (jsonObject.getBoolean("data")) {
+                            activity.finish();
+                        }
+                        if (progDialog.isShowing()) {
+                            progDialog.dismiss();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        ToastUtil.show(activity, "服务器有错误，请稍候再试");
+                        if (progDialog.isShowing()) {
+                            progDialog.dismiss();
+                        }
+                    }
+                });
             }
 
             @Override
             public void onError(Call call, Exception e, int id) {
-                ToastUtil.show(activity, "服务器有错误，请稍候再试");
-                if (progDialog.isShowing()) {
-                    progDialog.dismiss();
-                }
+
             }
         });
     }
@@ -761,7 +813,7 @@ public class MyRequest {
      */
     public static void updateStudentInfo(final Activity activity, String id, String studentName, String studentAge, String studentSex, String phone, String address) {
         final Dialog progDialog = DialogUtils.showWaitDialog(activity);
-        Map<String, Object> params = new HashMap<>();
+        final Map<String, Object> params = new HashMap<>();
         try {
             params.put("studentName", studentName);
             params.put("id", id);
@@ -773,31 +825,43 @@ public class MyRequest {
             e.printStackTrace();
         }
         String[] str = {SHA1, id, studentName, studentAge, studentSex, phone, address};
-        StringBuffer sb = new StringBuffer();
+        final StringBuffer sb = new StringBuffer();
         Arrays.sort(str);
         for (String string : str) {
             sb.append(string);
         }
-        String url = UrlConfig.URL_UPDATESTUDENTINFO + "sign=" + MyUtils.getSha1(sb.toString());
-        OkHttpUtils.post().url(url).params(params).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+        String url = "http://106.3.45.222:8008/Sha1_Json.aspx?strSign=" + sb.toString();
+        OkHttpUtils.get().url(url).id(100).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
             @Override
             public void onResponse(String response, int id) {
                 JSONObject jsonObject = JSON.parseObject(response);
-                ToastUtil.show(activity, (String) jsonObject.get("msg"));
-                if (jsonObject.getBoolean("data")) {
-                    activity.finish();
-                }
-                if (progDialog.isShowing()) {
-                    progDialog.dismiss();
-                }
+                String url = UrlConfig.URL_UPDATESTUDENTINFO + "sign=" + jsonObject.getString("result");
+                OkHttpUtils.post().url(url).params(params).build().execute(new GenericsCallback<String>(new JsonGenericsSerializator()) {
+                    @Override
+                    public void onResponse(String response, int id) {
+                        JSONObject jsonObject = JSON.parseObject(response);
+                        ToastUtil.show(activity, (String) jsonObject.get("msg"));
+                        if (jsonObject.getBoolean("data")) {
+                            activity.finish();
+                        }
+                        if (progDialog.isShowing()) {
+                            progDialog.dismiss();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        ToastUtil.show(activity, "服务器有错误，请稍候再试");
+                        if (progDialog.isShowing()) {
+                            progDialog.dismiss();
+                        }
+                    }
+                });
             }
 
             @Override
             public void onError(Call call, Exception e, int id) {
-                ToastUtil.show(activity, "服务器有错误，请稍候再试");
-                if (progDialog.isShowing()) {
-                    progDialog.dismiss();
-                }
+
             }
         });
     }

@@ -98,7 +98,8 @@
             android:id="@+id/studentinfo_address_et"
             style="@style/mine_updateinfo_edittext"
             android:layout_toRightOf="@+id/studentinfo_address_tv"
-            android:hint="@string/studentinfo_address_hint" />
+            android:hint="@string/studentinfo_address_hint"
+            android:inputType="number" />
     </RelativeLayout>
 
     <View style="@style/viewline" />

@@ -108,7 +108,7 @@ public class DianMingCFragment extends BaseFragment implements InterfaceHandler.
     @Override
     public void getstudentRollCall(ArrayList<StudentRollCallBean> studentRollCallBean) {
         if (studentRollCallBean == null || studentRollCallBean.size() == 0) {
-            FirstSaveAdapter adapter = new FirstSaveAdapter(context, studentInfoBeen,this);
+            FirstSaveAdapter adapter = new FirstSaveAdapter(context, studentInfoBeen, this);
             mPullRefreshListView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         } else {
@@ -121,19 +121,19 @@ public class DianMingCFragment extends BaseFragment implements InterfaceHandler.
                     StudentRollCallBean bean = studentRollCallBean.get(i);
                     for (int j = 0; j < studentInfoBeen.size(); j++) {
                         StudentInfoBean infoBean = studentInfoBeen.get(j);
-                        if (bean.getSi().getId().equals(infoBean.getId())) {//如果相同的话
-                            studentInfoBeen.remove(j);//remove相同的
-                            StudentInfoBean stuInfoBean = new StudentInfoBean(bean.getId(), bean.getSi().getStudentName(), bean.getState());
-                            studentInfoBeen.add(stuInfoBean);//添加网络的到本地
+                        if (bean.getSi().getId().equals(infoBean.getId())) {//如果相同的话,从新赋值
+                            studentInfoBeen.get(j).setId(bean.getId());
+                            studentInfoBeen.get(j).setStudentName(bean.getSi().getStudentName());
+                            studentInfoBeen.get(j).setStates(bean.getState());
                         }
                     }
                 }
-                FirstSaveAdapter adapter = new FirstSaveAdapter(context, studentInfoBeen,this);
+                FirstSaveAdapter adapter = new FirstSaveAdapter(context, studentInfoBeen, this);
                 mPullRefreshListView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             } else {
                 listBean = studentRollCallBean;
-                dianMingAdapter = new DianMingCAdapter(context, listBean,this);
+                dianMingAdapter = new DianMingCAdapter(context, listBean, this);
                 mPullRefreshListView.setAdapter(dianMingAdapter);
                 dianMingAdapter.notifyDataSetChanged();
             }

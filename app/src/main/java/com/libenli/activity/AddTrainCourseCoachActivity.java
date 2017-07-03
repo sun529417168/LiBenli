@@ -48,7 +48,7 @@ public class AddTrainCourseCoachActivity extends BaseActivity implements View.On
                 if (TextUtils.isEmpty(inputInfo.getText().toString().trim())) {
                     ToastUtil.show(AddTrainCourseCoachActivity.this, "请输入课程名称");
                 } else {
-                    MyRequest.addProject(AddTrainCourseCoachActivity.this, inputInfo.getText().toString().trim());
+                    MyRequest.getSign(AddTrainCourseCoachActivity.this, inputInfo.getText().toString().trim());
                 }
             }
         });

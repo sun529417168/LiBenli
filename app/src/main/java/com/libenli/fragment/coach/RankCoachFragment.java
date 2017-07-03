@@ -68,9 +68,8 @@ public class RankCoachFragment extends BaseFragment implements InterfaceHandler.
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
                 Log.e("TAG", "onPullDownToRefresh");
                 // 这里写下拉刷新的任务
-//                pageindex = 1;
-//                requestStudentInfo(pageindex);
-//                rankCoachAdapter.notifyDataSetChanged();
+                pageindex = 1;
+                requestStudentInfo(pageindex);
                 mPullRefreshListView.onRefreshComplete();
             }
 

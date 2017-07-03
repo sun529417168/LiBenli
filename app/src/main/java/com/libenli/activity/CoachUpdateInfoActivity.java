@@ -12,6 +12,7 @@ import com.libenli.base.BaseActivity;
 import com.libenli.bean.CoachInfoBean;
 import com.libenli.interfaces.InterfaceHandler;
 import com.libenli.utils.MyRequest;
+import com.libenli.utils.MyUtils;
 import com.libenli.utils.ToastUtil;
 
 import org.w3c.dom.Text;
@@ -79,6 +80,10 @@ public class CoachUpdateInfoActivity extends BaseActivity implements View.OnClic
                 }
                 if (TextUtils.isEmpty(phone)) {
                     ToastUtil.show(this, "请输入联系电话");
+                    return;
+                }
+                if (!MyUtils.isMobile(phone)) {
+                    ToastUtil.show(this, "请输入正确电话号码");
                     return;
                 }
                 MyRequest.dojoInfoUpdate(this, name, address, contact, phone);

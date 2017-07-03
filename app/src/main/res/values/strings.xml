@@ -14,6 +14,7 @@
     <!--登录界面start-->
     <string name="login_name">用户名：</string>
     <string name="login_namehint">请输入用户名</string>
+    <string name="login_padHint">请输入密码</string>
     <string name="login_password">密码：</string>
     <string name="login_btn">登录</string>
     <!--登录界面end-->
@@ -70,12 +71,12 @@
     <string name="studentinfo_sex">性别：</string>
     <string name="studentinfo_age">年龄：</string>
     <string name="studentinfo_phone">家长电话：</string>
-    <string name="studentinfo_address">家庭地址：</string>
+    <string name="studentinfo_address">体重：</string>
     <string name="studentinfo_name_hint">姓名</string>
     <string name="studentinfo_sex_hint">性别</string>
     <string name="studentinfo_age_hint">年龄</string>
     <string name="studentinfo_phone_hint">家长电话</string>
-    <string name="studentinfo_address_hint">家庭地址</string>
+    <string name="studentinfo_address_hint">体重</string>
     <!--我-学员列表 end-->
 
     <!--我-点到信息查询 begin-->

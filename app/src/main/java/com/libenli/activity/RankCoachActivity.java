@@ -107,21 +107,16 @@ public class RankCoachActivity extends BaseActivity implements View.OnClickListe
         if (studentScoreBean == null) {
             return;
         }
-        if (studentScoreBean.size() == 0) {
-            mPullRefreshListView.setVisibility(View.GONE);
-        } else {
-            mPullRefreshListView.setVisibility(View.VISIBLE);
-            if (pageindex == 1) {
-                listBean = studentScoreBean;
-                rankScoreCoachAdapter = new RankScoreCoachAdapter(this, listBean);
-                mPullRefreshListView.setAdapter(rankScoreCoachAdapter);
-            } else if (pageindex > 1 && studentScoreBean.size() != 0) {
-                listBean.addAll(studentScoreBean);
-                rankScoreCoachAdapter = new RankScoreCoachAdapter(this, listBean);
-                mPullRefreshListView.setAdapter(rankScoreCoachAdapter);
-            } else if (pageindex > 1 && studentScoreBean.size() == 0) {
-                ToastUtil.show(this, "没有更多数据了");
-            }
+        if (pageindex == 1) {
+            listBean = studentScoreBean;
+            rankScoreCoachAdapter = new RankScoreCoachAdapter(this, listBean);
+            mPullRefreshListView.setAdapter(rankScoreCoachAdapter);
+        } else if (pageindex > 1 && studentScoreBean.size() != 0) {
+            listBean.addAll(studentScoreBean);
+            rankScoreCoachAdapter = new RankScoreCoachAdapter(this, listBean);
+            mPullRefreshListView.setAdapter(rankScoreCoachAdapter);
+        } else if (pageindex > 1 && studentScoreBean.size() == 0) {
+            ToastUtil.show(this, "没有更多数据了");
         }
     }
 }
