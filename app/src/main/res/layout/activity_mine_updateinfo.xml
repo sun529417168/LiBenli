@@ -21,10 +21,10 @@
         <EditText
             android:id="@+id/updateinfo_name_et"
             style="@style/mine_updateinfo_edittext"
-            android:hint="@string/updateinfo_name_hint"
             android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/updateinfo_name_tv"
             android:layout_toRightOf="@+id/updateinfo_name_tv"
-            android:layout_toEndOf="@+id/updateinfo_name_tv" />
+            android:hint="@string/updateinfo_name_hint" />
     </RelativeLayout>
 
     <View style="@style/viewline" />
@@ -78,7 +78,8 @@
             android:id="@+id/updateinfo_phone_et"
             style="@style/mine_updateinfo_edittext"
             android:layout_toRightOf="@id/updateinfo_phone_tv"
-            android:hint="@string/updateinfo_phone_hint" />
+            android:hint="@string/updateinfo_phone_hint"
+            android:inputType="number" />
     </RelativeLayout>
 
     <View style="@style/viewline" />

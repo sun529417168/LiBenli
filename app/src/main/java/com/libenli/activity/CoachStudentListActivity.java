@@ -25,8 +25,13 @@ import com.libenli.utils.ToastUtil;
 import java.util.ArrayList;
 
 /**
- * Created by sun_t on 2017/6/18.
+ * 文件名：CoachStudentListActivity
+ * 描    述：学员列表页
+ * 作    者：stt
+ * 时    间：2017.04.24
+ * 版    本：V1.0.0
  */
+
 
 public class CoachStudentListActivity extends BaseActivity implements View.OnClickListener, InterfaceHandler.StudentInfoInterface, AdapterView.OnItemClickListener {
     private TextView tv_title;

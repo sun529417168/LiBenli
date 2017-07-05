@@ -11,6 +11,7 @@ import com.libenli.R;
 import com.libenli.base.BaseActivity;
 import com.libenli.bean.StudentInfoBean;
 import com.libenli.utils.MyRequest;
+import com.libenli.utils.MyUtils;
 import com.libenli.utils.ToastUtil;
 
 /**
@@ -60,7 +61,7 @@ public class AddorUpdateStudentCoachActivity extends BaseActivity implements Vie
         }
         if ("1".equals(studentType)) {
             tv_title.setText("修改学员");
-            bottom.setVisibility(View.VISIBLE);
+            bottom.setVisibility(View.GONE);
             ed_name.setText(studentInfoBean.getStudentName());
             ed_sex.setText(studentInfoBean.getStudentSex() + "");
             ed_age.setText(studentInfoBean.getStudentAge() + "");
@@ -96,6 +97,10 @@ public class AddorUpdateStudentCoachActivity extends BaseActivity implements Vie
                 }
                 if (TextUtils.isEmpty(phone)) {
                     ToastUtil.show(this, "请输入手机号");
+                    return;
+                }
+                if (!MyUtils.isMobile(phone)) {
+                    ToastUtil.show(this, "请输入正确手机号");
                     return;
                 }
                 if (TextUtils.isEmpty(address)) {

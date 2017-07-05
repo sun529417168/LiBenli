@@ -59,8 +59,11 @@
         <EditText
             android:id="@+id/studentinfo_age_et"
             style="@style/mine_updateinfo_edittext"
-            android:layout_toRightOf="@id/studentinfo_age_tv"
-            android:hint="@string/studentinfo_age_hint" />
+            android:hint="@string/studentinfo_age_hint"
+            android:inputType="number"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/studentinfo_age_tv"
+            android:layout_toEndOf="@+id/studentinfo_age_tv" />
     </RelativeLayout>
 
     <View style="@style/viewline" />
@@ -78,6 +81,7 @@
         <EditText
             android:id="@+id/studentinfo_phone_et"
             style="@style/mine_updateinfo_edittext"
+            android:inputType="number"
             android:layout_toRightOf="@id/studentinfo_phone_tv"
             android:hint="@string/studentinfo_phone_hint" />
     </RelativeLayout>
