@@ -2,10 +2,12 @@ package com.libenli.fragment.coach;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -40,7 +42,7 @@ import java.util.Iterator;
  * 版    本：V1.0.0
  */
 
-public class DianMingCFragment extends BaseFragment implements InterfaceHandler.StudentRollCallInterface, InterfaceHandler.StudentInfoInterface {
+public class DianMingCFragment extends BaseFragment implements InterfaceHandler.StudentRollCallInterface, InterfaceHandler.StudentInfoInterface, InterfaceHandler.UpdateTypeInterface {
     private Context context;
 
     private TextView tv_title, tv_date, nothing;
@@ -154,14 +156,27 @@ public class DianMingCFragment extends BaseFragment implements InterfaceHandler.
 
     @Override
     public void deleteStudent() {
-        pageindex = 1;
-        studentInfoBeen = new ArrayList<>();
-        requestStudentInfo(pageindex);
+//        pageindex = 1;
+//        studentInfoBeen = new ArrayList<>();
+//        requestStudentInfo(pageindex);
+
     }
 
     @Override
     public void onStop() {
         super.onStop();
         studentInfoBeen = new ArrayList<>();
+    }
+
+    @Override
+    public void typeInfo(Button qingJia, Button zhengChang, String type) {
+        if ("0".equals(type)) {
+            qingJia.setBackgroundColor(ContextCompat.getColor(context, R.color.red));
+            zhengChang.setBackgroundColor(ContextCompat.getColor(context, R.color.gray_s));
+        }
+        if ("1".equals(type)) {
+            qingJia.setBackgroundColor(ContextCompat.getColor(context, R.color.gray_s));
+            zhengChang.setBackgroundColor(ContextCompat.getColor(context, R.color.blue));
+        }
     }
 }

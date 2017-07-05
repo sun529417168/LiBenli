@@ -46,9 +46,9 @@ import static com.libenli.utils.MyRequest.SHA1;
 
 public class FirstSaveAdapter extends MyBaseAdapter {
     private ArrayList<StudentInfoBean> listBean = new ArrayList<>();
-    private InterfaceHandler.StudentInfoInterface studentInfoInterface;
+    private InterfaceHandler.UpdateTypeInterface studentInfoInterface;
 
-    public FirstSaveAdapter(Context context, List list, InterfaceHandler.StudentInfoInterface studentInfoInterface) {
+    public FirstSaveAdapter(Context context, List list, InterfaceHandler.UpdateTypeInterface studentInfoInterface) {
         super(context, list);
         listBean = (ArrayList<StudentInfoBean>) list;
         this.studentInfoInterface = studentInfoInterface;
@@ -62,8 +62,8 @@ public class FirstSaveAdapter extends MyBaseAdapter {
     @Override
     public void onInitView(View view, int position) {
         TextView name = get(view, R.id.coach_dianming_name);
-        Button qingJia = get(view, R.id.coach_dianming_qingJia);
-        Button zhengChang = get(view, R.id.coach_dianming_zhengChang);
+        final Button qingJia = get(view, R.id.coach_dianming_qingJia);
+        final Button zhengChang = get(view, R.id.coach_dianming_zhengChang);
         final StudentInfoBean bean = listBean.get(position);
         name.setText(bean.getStudentName());
         switch (bean.getStates()) {
@@ -85,9 +85,9 @@ public class FirstSaveAdapter extends MyBaseAdapter {
             @Override
             public void onClick(View v) {
                 if (bean.getStates() == 4) {
-                    MyRequest.saveFirst(context, studentInfoInterface, bean.getId(), "0");
+                    MyRequest.saveFirst(context, studentInfoInterface, bean.getId(), "0",qingJia,zhengChang);
                 } else {
-                    MyRequest.updateDianMing(context, studentInfoInterface, bean.getId(), "0");
+                    MyRequest.updateDianMing(context, studentInfoInterface, bean.getId(), "0",qingJia,zhengChang);
                 }
             }
         });
@@ -95,9 +95,9 @@ public class FirstSaveAdapter extends MyBaseAdapter {
             @Override
             public void onClick(View v) {
                 if (bean.getStates() == 4) {
-                    MyRequest.saveFirst(context, studentInfoInterface, bean.getId(), "1");
+                    MyRequest.saveFirst(context, studentInfoInterface, bean.getId(), "1",qingJia,zhengChang);
                 } else {
-                    MyRequest.updateDianMing(context, studentInfoInterface, bean.getId(), "1");
+                    MyRequest.updateDianMing(context, studentInfoInterface, bean.getId(), "1",qingJia,zhengChang);
                 }
             }
         });

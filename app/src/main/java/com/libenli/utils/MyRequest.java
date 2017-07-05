@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Button;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -872,9 +873,9 @@ public class MyRequest {
      * 参    数：Activity activity final String username, final String password
      * 返回值：无
      */
-    public static void saveFirst(final Context activity, InterfaceHandler.StudentInfoInterface studentInfoInterface, final String siId, String state) {
+    public static void saveFirst(final Context activity, InterfaceHandler.UpdateTypeInterface studentInfoInterface, final String siId, final String state, final Button qingJia, final Button zhengChang) {
         final Dialog progDialog = DialogUtils.showWaitDialog(activity);
-        final InterfaceHandler.StudentInfoInterface studentInfoInterfaces = studentInfoInterface;
+        final InterfaceHandler.UpdateTypeInterface studentInfoInterfaces = studentInfoInterface;
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         String rollCallDate = df.format(new Date());
         Map<String, Object> params = new HashMap<>();
@@ -898,7 +899,7 @@ public class MyRequest {
             public void onResponse(String response, int id) {
                 JSONObject jsonObject = JSON.parseObject(response);
                 ToastUtil.show(activity, (String) jsonObject.get("msg"));
-                studentInfoInterfaces.deleteStudent();
+                studentInfoInterfaces.typeInfo(qingJia, zhengChang, state);
                 if (progDialog.isShowing()) {
                     progDialog.dismiss();
                 }
@@ -920,9 +921,9 @@ public class MyRequest {
      * 参    数：Activity activity final String username, final String password
      * 返回值：无
      */
-    public static void updateDianMing(final Context activity, InterfaceHandler.StudentInfoInterface studentInfoInterface, final String siId, String state) {
+    public static void updateDianMing(final Context activity, InterfaceHandler.UpdateTypeInterface studentInfoInterface, final String siId, final String state, final Button qingJia, final Button zhengChang) {
         final Dialog progDialog = DialogUtils.showWaitDialog(activity);
-        final InterfaceHandler.StudentInfoInterface studentInfoInterfaces = studentInfoInterface;
+        final InterfaceHandler.UpdateTypeInterface studentInfoInterfaces = studentInfoInterface;
         Map<String, Object> params = new HashMap<>();
         try {
             params.put("id", siId);
@@ -942,7 +943,7 @@ public class MyRequest {
             public void onResponse(String response, int id) {
                 JSONObject jsonObject = JSON.parseObject(response);
                 ToastUtil.show(activity, (String) jsonObject.get("msg"));
-                studentInfoInterfaces.deleteStudent();
+                studentInfoInterfaces.typeInfo(qingJia, zhengChang, state);
                 if (progDialog.isShowing()) {
                     progDialog.dismiss();
                 }

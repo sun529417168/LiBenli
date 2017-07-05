@@ -1,5 +1,7 @@
 package com.libenli.interfaces;
 
+import android.widget.Button;
+
 import com.libenli.bean.CoachInfoBean;
 import com.libenli.bean.StudentInfoBean;
 import com.libenli.bean.StudentRollCallBean;
@@ -66,5 +68,9 @@ public class InterfaceHandler {
      */
     public static interface GetDiIdInterface {
         void getDiIdInfo(StudentDiIlBean studentDiIlBean);
+    }
+
+    public static interface UpdateTypeInterface {
+        void typeInfo(Button qingJia, Button zhengChang,String type);
     }
 }

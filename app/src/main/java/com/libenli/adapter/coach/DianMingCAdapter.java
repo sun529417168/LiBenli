@@ -26,9 +26,9 @@ import java.util.List;
 
 public class DianMingCAdapter extends MyBaseAdapter {
     private ArrayList<StudentRollCallBean> listBean = new ArrayList<>();
-    private InterfaceHandler.StudentInfoInterface studentInfoInterface;
+    private InterfaceHandler.UpdateTypeInterface studentInfoInterface;
 
-    public DianMingCAdapter(Context context, List list, InterfaceHandler.StudentInfoInterface studentInfoInterface) {
+    public DianMingCAdapter(Context context, List list, InterfaceHandler.UpdateTypeInterface studentInfoInterface) {
         super(context, list);
         listBean = (ArrayList<StudentRollCallBean>) list;
         this.studentInfoInterface = studentInfoInterface;
@@ -43,8 +43,8 @@ public class DianMingCAdapter extends MyBaseAdapter {
     @Override
     public void onInitView(View view, int position) {
         TextView name = get(view, R.id.coach_dianming_name);
-        Button qingJia = get(view, R.id.coach_dianming_qingJia);
-        Button zhengChang = get(view, R.id.coach_dianming_zhengChang);
+        final Button qingJia = get(view, R.id.coach_dianming_qingJia);
+        final Button zhengChang = get(view, R.id.coach_dianming_zhengChang);
         final StudentRollCallBean bean = listBean.get(position);
         name.setText(bean.getSi().getStudentName());
         switch (bean.getState()) {
@@ -64,13 +64,13 @@ public class DianMingCAdapter extends MyBaseAdapter {
         qingJia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyRequest.updateDianMing(context, studentInfoInterface, bean.getId(), "0");
+                MyRequest.updateDianMing(context, studentInfoInterface, bean.getId(), "0",qingJia,zhengChang);
             }
         });
         zhengChang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyRequest.updateDianMing(context, studentInfoInterface, bean.getId(), "1");
+                MyRequest.updateDianMing(context, studentInfoInterface, bean.getId(), "1",qingJia,zhengChang);
             }
         });
     }
