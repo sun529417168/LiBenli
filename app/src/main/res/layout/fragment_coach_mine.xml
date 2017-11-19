@@ -93,7 +93,9 @@
     <RelativeLayout
         android:id="@+id/rl_me_contact"
         style="@style/mine_item_relativelayout"
-        android:layout_below="@id/v_line3">
+        android:layout_below="@+id/v_line3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <ImageButton
             android:id="@+id/ib_contact"

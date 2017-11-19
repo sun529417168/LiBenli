@@ -53,4 +53,6 @@
     <drawable name="login_textgray">#999999</drawable>
     <drawable name="white">#ffffff</drawable>
     <drawable name="lightblue">#6ecbf5</drawable>
+    <!--透明-->
+    <color name="transparent">#00000000</color>
 </resources>

@@ -110,6 +110,11 @@
             android:name=".activity.DianDaoSearchActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
+        <!--联系我们的界面-->
+        <activity
+            android:name=".activity.ContactActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

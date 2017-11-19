@@ -15,6 +15,7 @@ import com.libenli.base.BaseActivity;
 import com.libenli.okhttps.OkHttpUtils;
 import com.libenli.okhttps.callback.BitmapCallback;
 import com.libenli.utils.SharedUtil;
+import com.libenli.utils.StatusBarUtils;
 
 import okhttp3.Call;
 
@@ -45,6 +46,7 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     protected void setDate(Bundle savedInstanceState) {
         type = SharedUtil.getInteger(this, "type", 0);
+        StatusBarUtils.ff(mContext, R.color.transparent);
     }
 
     /**

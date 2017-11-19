@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.libenli.R;
 import com.libenli.activity.CoachStudentListActivity;
+import com.libenli.activity.ContactActivity;
 import com.libenli.activity.DianDaoSearchActivity;
 import com.libenli.activity.LoginActivity;
 import com.libenli.activity.CoachUpdateInfoActivity;
@@ -34,7 +35,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     private TextView tv_title;
     private RelativeLayout rl_back;
     private TextView tv_exit;
-    private RelativeLayout update, studentList,searchDianDao;
+    private RelativeLayout update, studentList, searchDianDao, contact;
 
     @Override
     protected View setView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,6 +64,8 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         studentList.setOnClickListener(this);
         searchDianDao = (RelativeLayout) rootView.findViewById(R.id.rl_me_info);
         searchDianDao.setOnClickListener(this);
+        contact = (RelativeLayout) rootView.findViewById(R.id.rl_me_contact);
+        contact.setOnClickListener(this);
     }
 
 
@@ -83,6 +86,10 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.rl_me_info:
                 intent = new Intent(context, DianDaoSearchActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.rl_me_contact:
+                intent = new Intent(context, ContactActivity.class);
                 startActivity(intent);
                 break;
         }

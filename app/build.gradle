@@ -9,8 +9,8 @@ android {
         applicationId "com.libenli"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -34,4 +34,5 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp-urlconnection:3.2.0'
     compile 'com.github.franmontiel:PersistentCookieJar:v0.9.3'
     compile 'com.alibaba:fastjson:1.2.31'
+    compile files('libs/systembartint-1.0.4.jar')
 }
